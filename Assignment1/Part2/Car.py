@@ -4,6 +4,10 @@ from enum import IntEnum
 from random import choice
 
 
+def reward_matrix():
+    return [-10, 100]
+
+
 class Action(IntEnum):
     """An enum class used to represent actions for cars."""
 
@@ -27,7 +31,9 @@ class Action(IntEnum):
 class Car:
     """A class for representing a car in simulation."""
 
-    speed: int = 1
+    score: int = 0
+
+    speed: int = field(default=1, repr=False)
     """speed (int): Car's speed, how many tiles it moves during a turn."""
 
     scores: List[int] = field(default_factory=list, repr=False, init=False)
@@ -54,23 +60,28 @@ class Car:
     distance_on_bridge: int = field(default=0, repr=False, init=False)
     """distance_on_bridge (int): How far car has driven across bridge (default is 0)."""
 
-    def take_action(self, state: int) -> None:
+    r_matrix: List[int] = field(default_factory=reward_matrix, repr=False, init= False)
+
+    def take_action(self, cars_on_bridge: int) -> None:
         """Takes action for car based on bridge's current state and Q matrix.
 
         If all possible actions have equal Q value, it takes random action, highest values action otherwise.
         """
 
-        self.state = state
+        self.state = cars_on_bridge
 
-        wait_val = self.q_matrix[state]
-        drive_val = self.q_matrix[state + 1]
+        wait_val = self.q_matrix[cars_on_bridge]
+        drive_val = self.q_matrix[cars_on_bridge + 1]
 
         if wait_val == drive_val:
             self.action = choice([Action.WAIT, Action.DRIVE])  # Random choice
         else:
-            self.action = max(wait_val, drive_val)  # Choose best value from column
+            self.action = Action.DRIVE if wait_val < drive_val else Action.WAIT
 
-    def reward_action(self, reward: int) -> None:
+    def get_reward(self) -> int:
+        return self.r_matrix[self.action]
+
+    def reward_action(self, reward: int = None) -> None:
         """Rewards action taken by car using Q-Learning algorithm.
 
         Using reward argument and Q-Learning algorithm learns the car to take
@@ -92,7 +103,8 @@ class Car:
         # Update value in Q matrix
         self.q_matrix[s + a] += self.learn_factor * (reward + self.decay_factor * q_next - q)
 
-        self.scores.append(reward)  # Update score list
+        self.score += reward
+        self.scores.append(self.score)  # Update score list
 
     def print_data(self) -> None:
         """Prints out score, state, action and Q-matrix for car to console."""
