@@ -5,15 +5,13 @@ from numpy import array, zeros
 
 
 class Action(IntEnum):
-    """An enum class used to represent actions for cars.
-
-    Attributes:
-        WAIT (int): Wait action variable (is 0).
-        DRIVE (int): Drive action variable (is 1).
-    """
+    """An enum class used to represent actions for cars."""
 
     WAIT = 0
+    """WAIT (int): Wait action variable (is 0)."""
+
     DRIVE = 1
+    """DRIVE (int): Drive action variable (is 1)."""
 
     def __str__(self) -> str:
         """Method for getting name of action in readable format.
@@ -47,17 +45,16 @@ def random_action() -> Action:
 
 @dataclass
 class Car:
-    """A super class for representing a car in simulation.
-
-    Attributes:
-        action (Action): Action currently chosen by car (default is WAIT).
-        drove_over (bool): Whether car has driven over bridge (default is False).
-        score (int): Score earned by car in simulation.
-    """
+    """A super class for representing a car in simulation."""
 
     action: Action = field(default=Action.WAIT, repr=False, init=False)
+    """action (Action, optional): Action currently chosen by car (default is WAIT)."""
+
     drove_over: bool = field(default=False, repr=False, init=False)
+    """drove_over (bool, optional): Whether car has driven over bridge (default is False)."""
+
     score: int = 0
+    """score (int, optional): Score earned by car in simulation."""
 
     def take_action(self) -> None:
         """Takes action for car, NOT IMPLEMENTED."""
@@ -72,6 +69,11 @@ class Car:
         """
 
         pass
+
+    def print_data(self) -> None:
+        """Prints out action and score for car to console."""
+
+        print(f"Score: {self.score} Action: {self.action}")
 
 
 @dataclass
@@ -97,19 +99,19 @@ class RandomCar(Car):
 
 @dataclass
 class LearningCar(Car):
-    """Learning car, takes actions based on Q-Learning algorithm.
-
-    Attributes:
-        q_matrix (array): Q matrix for car (default is 2x2 zero matrix).
-        state (Action): Current state for car (default is either WAIT or DRIVE).
-        learn_factor (float): Learning factor for car (default is 0.9).
-        decay_factor (float): Decay factor for car (default is 0.5).
-    """
+    """Learning car, takes actions based on Q-Learning algorithm."""
 
     q_matrix: array = field(default_factory=make_new_q_matrix, repr=False, init=False)
+    """q_matrix (array, optional): Q matrix for car (default is 2x2 zero matrix)."""
+
     state: Action = field(default_factory=random_action, repr=False, init=False)
+    """state (Action, optional): Current state for car (default is either WAIT or DRIVE)."""
+
     learn_factor: float = 0.9
+    """learn_factor (float, optional): Learning factor for car (default is 0.9)."""
+
     decay_factor: float = 0.5
+    """decay_factor (float, optional): Decay factor for car (default is 0.5)."""
 
     def take_action(self) -> None:
         """Takes action for car based on its current state and Q matrix.
@@ -144,4 +146,12 @@ class LearningCar(Car):
 
         self.state = self.action  # Action is the new state
         self.score += reward  # Update score
+
         self.action = Action.WAIT if self.drove_over else self.action  # Done here so that simulate class is versatile.
+
+    def print_data(self) -> None:
+        """Prints out score, state, action and Q-matrix for car to console."""
+
+        m = self.q_matrix
+        print(f"Score: {self.score} State:{str(self.state)} Action: {str(self.action)}")
+        print(f"{m[0,0]:3.2f} {m[0,1]:3.2f}\n{m[1,0]:3.2f} {m[1,1]:3.2f}\n")

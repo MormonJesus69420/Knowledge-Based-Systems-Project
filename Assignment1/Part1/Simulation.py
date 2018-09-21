@@ -3,23 +3,23 @@ from typing import List
 from enum import IntEnum
 from matplotlib import pyplot
 
-from Car import Action, Car, RandomCar, LearningCar
+from Part1.Car import Action, Car, RandomCar, LearningCar
 
 
 class State(IntEnum):
-    """An enum class used to represent states in simulation.
-
-    Attributes:
-        CRASH (int): Crash state variable (is 0).
-        BOTH_WAIT (int): Both cars wait state variable (is 1).
-        CAR_1_DROVE (int): Car 1 drove while 2 waited state variable (is 2).
-        CAR_2_DROVE (int): Car 2 drove while 1 waited state variable (is 3).
-    """
+    """An enum class used to represent states in simulation."""
 
     CRASH = 0
+    """CRASH (int): Crash state variable (is 0)."""
+
     BOTH_WAIT = 1
+    """BOTH_WAIT (int): Both cars wait state variable (is 1)."""
+
     CAR_1_DROVE = 2
+    """CAR_1_DROVE (int): Car 1 drove while 2 waited state variable (is 2)."""
+
     CAR_2_DROVE = 3
+    """CAR_2_DROVE (int): Car 2 drove while 1 waited state variable (is 3)."""
 
     def __str__(self) -> str:
         """Method for getting name of state in readable format.
@@ -39,24 +39,25 @@ class Simulation:
     with scores for each cars gained through simulation. Simulates games where
     each car tries to cross a one lane bridge. Each game lasts until both cars
     have safely crossed the bridge or crashed.
-
-    Attributes:
-        car1 (Car): First car to be used in simulation.
-        car2 (Car): Second car to be used in simulation.
-        car1_scores (List[int]): List of scores for car 1 after each game
-        (default is an empty list).
-        car2_scores (List[int]): List of scores for car 2 after each game
-        (default is an empty list).
-        state (State): State for current turn in game (default is BOTH_WAIT).
-        debug (bool): Whether to print status messages to (default is False).
     """
 
     car1: Car
+    """car1 (Car): First car used in simulation."""
+
     car2: Car
+    """car2 (Car): Second car used in simulation."""
+
     car1_scores: List[int] = field(default_factory=list, repr=False, init=False)
+    """car1_scores (List[int], optional): List of scores for car 1 after each game (default is an empty list)."""
+
     car2_scores: List[int] = field(default_factory=list, repr=False, init=False)
+    """car2_scores (List[int], optional): List of scores for car 2 after each game (default is an empty list)."""
+
     state: State = State.BOTH_WAIT
+    """state (State, optional): State for current turn in game (default is BOTH_WAIT)."""
+
     debug: bool = False
+    """debug (bool, optional): Whether to print status messages to (default is False)."""
 
     def take_actions(self) -> None:
         """Lets each car that hasn't crossed bridge take an action."""
@@ -99,11 +100,6 @@ class Simulation:
         if not self.car2.drove_over or s is State.CAR_2_DROVE:
             self.car2.reward_action(r2)
 
-    def print_results(self) -> None:
-        """Prints out state and scores for cars for this round to console."""
-
-        print(f"State: {str(self.state)} Scores: {self.car1.score} & {self.car2.score}")
-
     def cleanup_game(self) -> None:
         """Adds scores for cars to list, resets state and drove_over for cars."""
 
@@ -114,6 +110,10 @@ class Simulation:
 
     def show_graph(self) -> None:
         """Shows graph with scores for each car after simulation."""
+
+        if self.debug:
+            self.car1.print_data()
+            self.car2.print_data()
 
         car1, = pyplot.plot(self.car1_scores, label="Car 1")
         car2, = pyplot.plot(self.car2_scores, label="Car 2")
@@ -138,24 +138,25 @@ class Simulation:
         """
 
         for _ in range(no_games):
-            if self.debug:
-                print("New game")
             while not (self.car1.drove_over and self.car2.drove_over) and self.state != State.CRASH:
                 self.take_actions()
                 self.check_state()
                 self.give_rewards()
+
                 if self.debug:
-                    self.print_results()
+                    self.car1.print_data()
+                    self.car2.print_data()
 
             self.cleanup_game()
 
         self.show_graph()
 
 
-print("Zero Intelligence cars")
-random = Simulation(RandomCar(), RandomCar())
-random.simulate_games(1000)
+if __name__ == "__main__":
+    print("Zero Intelligence cars")
+    random = Simulation(RandomCar(), RandomCar())
+    random.simulate_games(1000)
 
-print("Q-Learning cars")
-learn = Simulation(LearningCar(), LearningCar())
-learn.simulate_games(1000)
+    print("Q-Learning cars")
+    learn = Simulation(LearningCar(), LearningCar(), debug=True)
+    learn.simulate_games(1000)

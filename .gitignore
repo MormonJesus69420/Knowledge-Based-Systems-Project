@@ -24,7 +24,6 @@
 ## CMake
 CMakeFiles/
 BUILD/
-build/
 
 CMakeLists.txt.user
 cmake_install.cmake
@@ -70,6 +69,11 @@ qtc-gdbmacros
 ## Ignored PyCharm files
 __pycache__/
 .idea/
+
+################################################################################
+## Ignored Sphinx documentation files
+doctrees/
+*.doctree
 
 ################################################################################
 ## Ignored venv files

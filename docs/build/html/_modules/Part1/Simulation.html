@@ -1,0 +1,259 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Part1.Simulation &#8212; Semester Assignments 1.0.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for Part1.Simulation</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="k">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">enum</span> <span class="k">import</span> <span class="n">IntEnum</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span>
+
+<span class="kn">from</span> <span class="nn">Car</span> <span class="k">import</span> <span class="n">Action</span><span class="p">,</span> <span class="n">Car</span><span class="p">,</span> <span class="n">RandomCar</span><span class="p">,</span> <span class="n">LearningCar</span>
+
+
+<div class="viewcode-block" id="State"><a class="viewcode-back" href="../../Part1.html#Part1.Simulation.State">[docs]</a><span class="k">class</span> <span class="nc">State</span><span class="p">(</span><span class="n">IntEnum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;An enum class used to represent states in simulation.&quot;&quot;&quot;</span>
+
+    <span class="n">CRASH</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="sd">&quot;&quot;&quot;CRASH (int): Crash state variable (is 0).&quot;&quot;&quot;</span>
+
+    <span class="n">BOTH_WAIT</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="sd">&quot;&quot;&quot;BOTH_WAIT (int): Both cars wait state variable (is 1).&quot;&quot;&quot;</span>
+
+    <span class="n">CAR_1_DROVE</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="sd">&quot;&quot;&quot;CAR_1_DROVE (int): Car 1 drove while 2 waited state variable (is 2).&quot;&quot;&quot;</span>
+
+    <span class="n">CAR_2_DROVE</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="sd">&quot;&quot;&quot;CAR_2_DROVE (int): Car 2 drove while 1 waited state variable (is 3).&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Method for getting name of state in readable format.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: Name of state in nice format.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Simulation"><a class="viewcode-back" href="../../Part1.html#Part1.Simulation.Simulation">[docs]</a><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">Simulation</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;A class for simulating one lane bridge crossing problem.</span>
+
+<span class="sd">    It takes in two cars and uses them to simulate games finally showing a graph</span>
+<span class="sd">    with scores for each cars gained through simulation. Simulates games where</span>
+<span class="sd">    each car tries to cross a one lane bridge. Each game lasts until both cars</span>
+<span class="sd">    have safely crossed the bridge or crashed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">car1</span><span class="p">:</span> <span class="n">Car</span>
+    <span class="sd">&quot;&quot;&quot;car1 (Car): First car used in simulation.&quot;&quot;&quot;</span>
+
+    <span class="n">car2</span><span class="p">:</span> <span class="n">Car</span>
+    <span class="sd">&quot;&quot;&quot;car2 (Car): Second car used in simulation.&quot;&quot;&quot;</span>
+
+    <span class="n">car1_scores</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">,</span> <span class="nb">repr</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;car1_scores (List[int], optional): List of scores for car 1 after each game (default is an empty list).&quot;&quot;&quot;</span>
+
+    <span class="n">car2_scores</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">,</span> <span class="nb">repr</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;car2_scores (List[int], optional): List of scores for car 2 after each game (default is an empty list).&quot;&quot;&quot;</span>
+
+    <span class="n">state</span><span class="p">:</span> <span class="n">State</span> <span class="o">=</span> <span class="n">State</span><span class="o">.</span><span class="n">BOTH_WAIT</span>
+    <span class="sd">&quot;&quot;&quot;state (State, optional): State for current turn in game (default is BOTH_WAIT).&quot;&quot;&quot;</span>
+
+    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="sd">&quot;&quot;&quot;debug (bool, optional): Whether to print status messages to (default is False).&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Simulation.take_actions"><a class="viewcode-back" href="../../Part1.html#Part1.Simulation.Simulation.take_actions">[docs]</a>    <span class="k">def</span> <span class="nf">take_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Lets each car that hasn&#39;t crossed bridge take an action.&quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">car1</span><span class="o">.</span><span class="n">drove_over</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">car1</span><span class="o">.</span><span class="n">take_action</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">car2</span><span class="o">.</span><span class="n">drove_over</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">car2</span><span class="o">.</span><span class="n">take_action</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Simulation.check_state"><a class="viewcode-back" href="../../Part1.html#Part1.Simulation.Simulation.check_state">[docs]</a>    <span class="k">def</span> <span class="nf">check_state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Checks game state after each car took action.&quot;&quot;&quot;</span>
+
+        <span class="n">c1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">car1</span>
+        <span class="n">c2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">car2</span>
+
+        <span class="k">if</span> <span class="n">c1</span><span class="o">.</span><span class="n">action</span> <span class="o">==</span> <span class="n">c2</span><span class="o">.</span><span class="n">action</span> <span class="o">==</span> <span class="n">Action</span><span class="o">.</span><span class="n">DRIVE</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">State</span><span class="o">.</span><span class="n">CRASH</span>
+        <span class="k">elif</span> <span class="n">c1</span><span class="o">.</span><span class="n">action</span> <span class="o">==</span> <span class="n">c2</span><span class="o">.</span><span class="n">action</span> <span class="o">==</span> <span class="n">Action</span><span class="o">.</span><span class="n">WAIT</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">State</span><span class="o">.</span><span class="n">BOTH_WAIT</span>
+        <span class="k">elif</span> <span class="n">c1</span><span class="o">.</span><span class="n">action</span> <span class="o">==</span> <span class="n">Action</span><span class="o">.</span><span class="n">DRIVE</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">State</span><span class="o">.</span><span class="n">CAR_1_DROVE</span>
+            <span class="n">c1</span><span class="o">.</span><span class="n">drove_over</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">State</span><span class="o">.</span><span class="n">CAR_2_DROVE</span>
+            <span class="n">c2</span><span class="o">.</span><span class="n">drove_over</span> <span class="o">=</span> <span class="kc">True</span></div>
+
+<div class="viewcode-block" id="Simulation.give_rewards"><a class="viewcode-back" href="../../Part1.html#Part1.Simulation.Simulation.give_rewards">[docs]</a>    <span class="k">def</span> <span class="nf">give_rewards</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Gives rewards to each car based on current turn state.</span>
+
+<span class="sd">        First it finds reward value based on turn state, then calls</span>
+<span class="sd">        reward_action in each car as long as it hasn&#39;t driven over the bridge.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span>
+        <span class="n">r1</span> <span class="o">=</span> <span class="o">-</span><span class="mi">200</span> <span class="k">if</span> <span class="n">s</span> <span class="ow">is</span> <span class="n">State</span><span class="o">.</span><span class="n">CRASH</span> <span class="k">else</span> <span class="mi">100</span> <span class="k">if</span> <span class="n">s</span> <span class="ow">is</span> <span class="n">State</span><span class="o">.</span><span class="n">CAR_1_DROVE</span> <span class="k">else</span> <span class="o">-</span><span class="mi">10</span>
+        <span class="n">r2</span> <span class="o">=</span> <span class="o">-</span><span class="mi">200</span> <span class="k">if</span> <span class="n">s</span> <span class="ow">is</span> <span class="n">State</span><span class="o">.</span><span class="n">CRASH</span> <span class="k">else</span> <span class="mi">100</span> <span class="k">if</span> <span class="n">s</span> <span class="ow">is</span> <span class="n">State</span><span class="o">.</span><span class="n">CAR_2_DROVE</span> <span class="k">else</span> <span class="o">-</span><span class="mi">10</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">car1</span><span class="o">.</span><span class="n">drove_over</span> <span class="ow">or</span> <span class="n">s</span> <span class="ow">is</span> <span class="n">State</span><span class="o">.</span><span class="n">CAR_1_DROVE</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">car1</span><span class="o">.</span><span class="n">reward_action</span><span class="p">(</span><span class="n">r1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">car2</span><span class="o">.</span><span class="n">drove_over</span> <span class="ow">or</span> <span class="n">s</span> <span class="ow">is</span> <span class="n">State</span><span class="o">.</span><span class="n">CAR_2_DROVE</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">car2</span><span class="o">.</span><span class="n">reward_action</span><span class="p">(</span><span class="n">r2</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Simulation.cleanup_game"><a class="viewcode-back" href="../../Part1.html#Part1.Simulation.Simulation.cleanup_game">[docs]</a>    <span class="k">def</span> <span class="nf">cleanup_game</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Adds scores for cars to list, resets state and drove_over for cars.&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">car1_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">car1</span><span class="o">.</span><span class="n">score</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">car2_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">car2</span><span class="o">.</span><span class="n">score</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">State</span><span class="o">.</span><span class="n">BOTH_WAIT</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">car1</span><span class="o">.</span><span class="n">drove_over</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">car2</span><span class="o">.</span><span class="n">drove_over</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+<div class="viewcode-block" id="Simulation.show_graph"><a class="viewcode-back" href="../../Part1.html#Part1.Simulation.Simulation.show_graph">[docs]</a>    <span class="k">def</span> <span class="nf">show_graph</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Shows graph with scores for each car after simulation.&quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">debug</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">car1</span><span class="o">.</span><span class="n">print_data</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">car2</span><span class="o">.</span><span class="n">print_data</span><span class="p">()</span>
+
+        <span class="n">car1</span><span class="p">,</span> <span class="o">=</span> <span class="n">pyplot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">car1_scores</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Car 1&quot;</span><span class="p">)</span>
+        <span class="n">car2</span><span class="p">,</span> <span class="o">=</span> <span class="n">pyplot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">car2_scores</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Car 2&quot;</span><span class="p">)</span>
+        <span class="n">pyplot</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="p">[</span><span class="n">car1</span><span class="p">,</span> <span class="n">car2</span><span class="p">])</span>
+
+        <span class="n">pyplot</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Score&quot;</span><span class="p">)</span>
+        <span class="n">pyplot</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Games&quot;</span><span class="p">)</span>
+
+        <span class="n">pyplot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Simulation.simulate_games"><a class="viewcode-back" href="../../Part1.html#Part1.Simulation.Simulation.simulate_games">[docs]</a>    <span class="k">def</span> <span class="nf">simulate_games</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">no_games</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Simulates a given amount of games for the cars.</span>
+
+<span class="sd">        This method runs the whole simulation calling methods in class to play</span>
+<span class="sd">        out games and turns in the game. For each game it lets cars take action,</span>
+<span class="sd">        checks turn state, and gives rewards. After each game it cleans up and</span>
+<span class="sd">        runs again until it has ran the required amount of games. In the end it</span>
+<span class="sd">        shows plot of car scores.</span>
+
+<span class="sd">        Arguments:</span>
+<span class="sd">            no_games (int): Number of games to simulate.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">no_games</span><span class="p">):</span>
+            <span class="k">while</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">car1</span><span class="o">.</span><span class="n">drove_over</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">car2</span><span class="o">.</span><span class="n">drove_over</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">!=</span> <span class="n">State</span><span class="o">.</span><span class="n">CRASH</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">take_actions</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">check_state</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">give_rewards</span><span class="p">()</span>
+
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">debug</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">car1</span><span class="o">.</span><span class="n">print_data</span><span class="p">()</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">car2</span><span class="o">.</span><span class="n">print_data</span><span class="p">()</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">cleanup_game</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">show_graph</span><span class="p">()</span></div></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Zero Intelligence cars&quot;</span><span class="p">)</span>
+    <span class="n">random</span> <span class="o">=</span> <span class="n">Simulation</span><span class="p">(</span><span class="n">RandomCar</span><span class="p">(),</span> <span class="n">RandomCar</span><span class="p">())</span>
+    <span class="n">random</span><span class="o">.</span><span class="n">simulate_games</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Q-Learning cars&quot;</span><span class="p">)</span>
+    <span class="n">learn</span> <span class="o">=</span> <span class="n">Simulation</span><span class="p">(</span><span class="n">LearningCar</span><span class="p">(),</span> <span class="n">LearningCar</span><span class="p">(),</span> <span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">learn</span><span class="o">.</span><span class="n">simulate_games</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Semester Assignments</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Assignment1.html">Assignment 1</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, MormonJesus69420.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
