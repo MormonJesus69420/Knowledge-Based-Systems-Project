@@ -22,6 +22,8 @@ class Bridge:
         return finished_cars
 
     def collapse(self) -> List[Car]:
+
         temp = self.cars
         self.cars = list()
+
         return temp

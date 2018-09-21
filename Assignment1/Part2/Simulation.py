@@ -17,8 +17,9 @@ class Simulation:
 
     def get_new_cars(self) -> None:
         new_cars = np.random.poisson(lam=self.lamb)
+
         if new_cars >= len(self.carpool):
-            self.queue = self.carpool
+            self.queue += self.carpool
             self.carpool = list()
         else:
             shuffle(self.carpool)
@@ -62,7 +63,7 @@ class Simulation:
             handles.append(temp)
             count += 1
 
-        pyplot.legend(handles=handles)
+        pyplot.legend(handles=handles, loc='center left', bbox_to_anchor=(1, 0.5))
 
         pyplot.ylabel("Score")
         pyplot.xlabel("Bridge crossings")
@@ -105,4 +106,4 @@ for _ in range(15):
     a.append(Car())
 
 s = Simulation(Bridge(), a)
-s.simulate_turns(100)
+s.simulate_turns(10000)
