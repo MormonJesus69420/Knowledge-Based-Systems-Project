@@ -34,7 +34,7 @@ class Bridge:
         """ Moves cars across the bridge and returns cars that have crossed it.
 
         Returns:
-            List[Car2]: List of cars that have crossed the bridge this turn.
+            List[Car]: List of cars that have crossed the bridge this turn.
         """
 
         finished_cars = list()
@@ -48,7 +48,12 @@ class Bridge:
         return finished_cars
 
     def collapse_bridge(self) -> List[Car]:
-        """"""
+        """Returns a list of all cars on bridge and sets cars to empty list.
+
+        Returns:
+            List[Car]: List of cars that were on bridge when it collapsed.
+        """
+
         temp = self.cars
         self.cars = list()
 

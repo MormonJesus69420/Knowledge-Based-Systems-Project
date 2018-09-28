@@ -4,7 +4,13 @@ from enum import IntEnum
 from random import choice
 
 
-def reward_matrix():
+def reward_matrix() -> List[int]:
+    """Simple method that returns a reward matrix, -1 for wait, 100 for drive.
+
+    Returns:
+        List[int]: Reward matrix for cars.
+    """
+
     return [-1, 100]
 
 
@@ -32,6 +38,7 @@ class Car:
     """A class for representing a car in simulation."""
 
     score: int = 0
+    """score(int): Overall score for the car."""
 
     speed: int = field(default=1, repr=False)
     """speed (int): Car's speed, how many tiles it moves during a turn."""
@@ -58,9 +65,10 @@ class Car:
     """decay_factor (float): Decay factor for car (default is 0.5)."""
 
     distance_on_bridge: int = field(default=0, repr=False, init=False)
-    """distance_on_bridge (int): How far car has driven across bridge (default is 0)."""
+    """distance_on_bridge (int): How far car has driven on bridge (default is 0)."""
 
-    r_matrix: List[int] = field(default_factory=reward_matrix, repr=False, init= False)
+    r_matrix: List[int] = field(default_factory=reward_matrix, repr=False, init=False)
+    """r_matrix (List[int]): Reward matrix for the car (default is [-1, 100])."""
 
     def take_action(self, cars_on_bridge: int) -> None:
         """Takes action for car based on bridge's current state and Q matrix.
@@ -79,9 +87,15 @@ class Car:
             self.action = Action.DRIVE if wait_val < drive_val else Action.WAIT
 
     def get_reward(self) -> int:
+        """Returns reward for car based on its action.
+
+        Returns:
+            int: Reward for action, -1 for wait, 100 for drive.
+        """
+
         return self.r_matrix[self.action]
 
-    def reward_action(self, reward: int = None) -> None:
+    def reward_action(self, reward: int) -> None:
         """Rewards action taken by car using Q-Learning algorithm.
 
         Using reward argument and Q-Learning algorithm learns the car to take

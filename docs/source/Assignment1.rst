@@ -7,3 +7,4 @@ Here is the documentation for the first assignment.
    :caption: Assignment 1:
 
    Part1
+   Part2

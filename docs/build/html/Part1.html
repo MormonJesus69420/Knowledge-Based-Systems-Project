@@ -16,6 +16,7 @@
     <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Part 2" href="Part2.html" />
     <link rel="prev" title="Assignment 1" href="Assignment1.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -41,13 +42,13 @@
 <div class="section" id="action-enum">
 <h3>Action Enum<a class="headerlink" href="#action-enum" title="Permalink to this headline">¶</a></h3>
 <dl class="class">
-<dt id="Part1.Car.Action">
-<em class="property">class </em><code class="descclassname">Part1.Car.</code><code class="descname">Action</code><a class="reference internal" href="_modules/Part1/Car.html#Action"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Car.Action" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Car1.Action">
+<em class="property">class </em><code class="descclassname">Part1.Car1.</code><code class="descname">Action</code><a class="reference internal" href="_modules/Part1/Car1.html#Action"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Car1.Action" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntEnum" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></a></p>
 <p>An enum class used to represent actions for cars.</p>
 <dl class="attribute">
-<dt id="Part1.Car.Action.DRIVE">
-<code class="descname">DRIVE</code><em class="property"> = 1</em><a class="headerlink" href="#Part1.Car.Action.DRIVE" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Car1.Action.DRIVE">
+<code class="descname">DRIVE</code><em class="property"> = 1</em><a class="headerlink" href="#Part1.Car1.Action.DRIVE" title="Permalink to this definition">¶</a></dt>
 <dd><p>Drive action variable (is 1).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -60,8 +61,8 @@
 </dd></dl>
 
 <dl class="attribute">
-<dt id="Part1.Car.Action.WAIT">
-<code class="descname">WAIT</code><em class="property"> = 0</em><a class="headerlink" href="#Part1.Car.Action.WAIT" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Car1.Action.WAIT">
+<code class="descname">WAIT</code><em class="property"> = 0</em><a class="headerlink" href="#Part1.Car1.Action.WAIT" title="Permalink to this definition">¶</a></dt>
 <dd><p>Wait action variable (is 0).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -79,27 +80,27 @@
 <div class="section" id="car-class">
 <h3>Car Class<a class="headerlink" href="#car-class" title="Permalink to this headline">¶</a></h3>
 <dl class="class">
-<dt id="Part1.Car.Car">
-<em class="property">class </em><code class="descclassname">Part1.Car.</code><code class="descname">Car</code><span class="sig-paren">(</span><em>score: int = 0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Part1/Car.html#Car"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Car.Car" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Car1.Car">
+<em class="property">class </em><code class="descclassname">Part1.Car1.</code><code class="descname">Car</code><span class="sig-paren">(</span><em>score: int = 0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Part1/Car1.html#Car"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Car1.Car" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>A super class for representing a car in simulation.</p>
 <dl class="attribute">
-<dt id="Part1.Car.Car.action">
-<code class="descname">action</code><em class="property"> = 0</em><a class="headerlink" href="#Part1.Car.Car.action" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Car1.Car.action">
+<code class="descname">action</code><em class="property"> = 0</em><a class="headerlink" href="#Part1.Car1.Car.action" title="Permalink to this definition">¶</a></dt>
 <dd><p>Action currently chosen by car (default is WAIT).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">action (<a class="reference internal" href="#Part1.Car.Action" title="Part1.Car.Action">Action</a>, optional)</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">action (<a class="reference internal" href="#Part1.Car1.Action" title="Part1.Car1.Action">Action</a>, optional)</td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="Part1.Car.Car.drove_over">
-<code class="descname">drove_over</code><em class="property"> = False</em><a class="headerlink" href="#Part1.Car.Car.drove_over" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Car1.Car.drove_over">
+<code class="descname">drove_over</code><em class="property"> = False</em><a class="headerlink" href="#Part1.Car1.Car.drove_over" title="Permalink to this definition">¶</a></dt>
 <dd><p>Whether car has driven over bridge (default is False).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -112,14 +113,14 @@
 </dd></dl>
 
 <dl class="method">
-<dt id="Part1.Car.Car.print_data">
-<code class="descname">print_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/Part1/Car.html#Car.print_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Car.Car.print_data" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Car1.Car.print_data">
+<code class="descname">print_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/Part1/Car1.html#Car.print_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Car1.Car.print_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prints out action and score for car to console.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="Part1.Car.Car.reward_action">
-<code class="descname">reward_action</code><span class="sig-paren">(</span><em>reward: int</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/Part1/Car.html#Car.reward_action"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Car.Car.reward_action" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Car1.Car.reward_action">
+<code class="descname">reward_action</code><span class="sig-paren">(</span><em>reward: int</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/Part1/Car1.html#Car.reward_action"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Car1.Car.reward_action" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rewards action taken by car, NOT IMPLEMENTED.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -132,8 +133,8 @@
 </dd></dl>
 
 <dl class="attribute">
-<dt id="Part1.Car.Car.score">
-<code class="descname">score</code><em class="property"> = 0</em><a class="headerlink" href="#Part1.Car.Car.score" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Car1.Car.score">
+<code class="descname">score</code><em class="property"> = 0</em><a class="headerlink" href="#Part1.Car1.Car.score" title="Permalink to this definition">¶</a></dt>
 <dd><p>Score earned by car in simulation.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -146,8 +147,8 @@
 </dd></dl>
 
 <dl class="method">
-<dt id="Part1.Car.Car.take_action">
-<code class="descname">take_action</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/Part1/Car.html#Car.take_action"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Car.Car.take_action" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Car1.Car.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/Part1/Car1.html#Car.take_action"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Car1.Car.take_action" title="Permalink to this definition">¶</a></dt>
 <dd><p>Takes action for car, NOT IMPLEMENTED.</p>
 </dd></dl>
 
@@ -157,13 +158,13 @@
 <div class="section" id="random-car-class">
 <h3>Random Car Class<a class="headerlink" href="#random-car-class" title="Permalink to this headline">¶</a></h3>
 <dl class="class">
-<dt id="Part1.Car.RandomCar">
-<em class="property">class </em><code class="descclassname">Part1.Car.</code><code class="descname">RandomCar</code><span class="sig-paren">(</span><em>score: int = 0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Part1/Car.html#RandomCar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Car.RandomCar" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#Part1.Car.Car" title="Part1.Car.Car"><code class="xref py py-class docutils literal notranslate"><span class="pre">Part1.Car.Car</span></code></a></p>
+<dt id="Part1.Car1.RandomCar">
+<em class="property">class </em><code class="descclassname">Part1.Car1.</code><code class="descname">RandomCar</code><span class="sig-paren">(</span><em>score: int = 0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Part1/Car1.html#RandomCar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Car1.RandomCar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#Part1.Car1.Car" title="Part1.Car1.Car"><code class="xref py py-class docutils literal notranslate"><span class="pre">Part1.Car1.Car</span></code></a></p>
 <p>Zero intelligence car, takes random actions and learns nothing.</p>
 <dl class="method">
-<dt id="Part1.Car.RandomCar.reward_action">
-<code class="descname">reward_action</code><span class="sig-paren">(</span><em>reward: int</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/Part1/Car.html#RandomCar.reward_action"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Car.RandomCar.reward_action" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Car1.RandomCar.reward_action">
+<code class="descname">reward_action</code><span class="sig-paren">(</span><em>reward: int</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/Part1/Car1.html#RandomCar.reward_action"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Car1.RandomCar.reward_action" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rewards action taken by car, simply updates score.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -176,8 +177,8 @@
 </dd></dl>
 
 <dl class="method">
-<dt id="Part1.Car.RandomCar.take_action">
-<code class="descname">take_action</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/Part1/Car.html#RandomCar.take_action"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Car.RandomCar.take_action" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Car1.RandomCar.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/Part1/Car1.html#RandomCar.take_action"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Car1.RandomCar.take_action" title="Permalink to this definition">¶</a></dt>
 <dd><p>Takes random action for car.</p>
 </dd></dl>
 
@@ -187,13 +188,13 @@
 <div class="section" id="learning-car-class">
 <h3>Learning Car Class<a class="headerlink" href="#learning-car-class" title="Permalink to this headline">¶</a></h3>
 <dl class="class">
-<dt id="Part1.Car.LearningCar">
-<em class="property">class </em><code class="descclassname">Part1.Car.</code><code class="descname">LearningCar</code><span class="sig-paren">(</span><em>score: int = 0</em>, <em>learn_factor: float = 0.9</em>, <em>decay_factor: float = 0.5</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Part1/Car.html#LearningCar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Car.LearningCar" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#Part1.Car.Car" title="Part1.Car.Car"><code class="xref py py-class docutils literal notranslate"><span class="pre">Part1.Car.Car</span></code></a></p>
+<dt id="Part1.Car1.LearningCar">
+<em class="property">class </em><code class="descclassname">Part1.Car1.</code><code class="descname">LearningCar</code><span class="sig-paren">(</span><em>score: int = 0</em>, <em>learn_factor: float = 0.9</em>, <em>decay_factor: float = 0.5</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Part1/Car1.html#LearningCar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Car1.LearningCar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#Part1.Car1.Car" title="Part1.Car1.Car"><code class="xref py py-class docutils literal notranslate"><span class="pre">Part1.Car1.Car</span></code></a></p>
 <p>Learning car, takes actions based on Q-Learning algorithm.</p>
 <dl class="attribute">
-<dt id="Part1.Car.LearningCar.decay_factor">
-<code class="descname">decay_factor</code><em class="property"> = 0.5</em><a class="headerlink" href="#Part1.Car.LearningCar.decay_factor" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Car1.LearningCar.decay_factor">
+<code class="descname">decay_factor</code><em class="property"> = 0.5</em><a class="headerlink" href="#Part1.Car1.LearningCar.decay_factor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Decay factor for car (default is 0.5).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -206,8 +207,8 @@
 </dd></dl>
 
 <dl class="attribute">
-<dt id="Part1.Car.LearningCar.learn_factor">
-<code class="descname">learn_factor</code><em class="property"> = 0.9</em><a class="headerlink" href="#Part1.Car.LearningCar.learn_factor" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Car1.LearningCar.learn_factor">
+<code class="descname">learn_factor</code><em class="property"> = 0.9</em><a class="headerlink" href="#Part1.Car1.LearningCar.learn_factor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Learning factor for car (default is 0.9).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -220,14 +221,14 @@
 </dd></dl>
 
 <dl class="method">
-<dt id="Part1.Car.LearningCar.print_data">
-<code class="descname">print_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/Part1/Car.html#LearningCar.print_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Car.LearningCar.print_data" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Car1.LearningCar.print_data">
+<code class="descname">print_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/Part1/Car1.html#LearningCar.print_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Car1.LearningCar.print_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prints out score, state, action and Q-matrix for car to console.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="Part1.Car.LearningCar.q_matrix">
-<code class="descname">q_matrix</code><em class="property"> = None</em><a class="headerlink" href="#Part1.Car.LearningCar.q_matrix" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Car1.LearningCar.q_matrix">
+<code class="descname">q_matrix</code><em class="property"> = None</em><a class="headerlink" href="#Part1.Car1.LearningCar.q_matrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Q matrix for car (default is 2x2 zero matrix).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -240,8 +241,8 @@
 </dd></dl>
 
 <dl class="method">
-<dt id="Part1.Car.LearningCar.reward_action">
-<code class="descname">reward_action</code><span class="sig-paren">(</span><em>reward: int</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/Part1/Car.html#LearningCar.reward_action"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Car.LearningCar.reward_action" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Car1.LearningCar.reward_action">
+<code class="descname">reward_action</code><span class="sig-paren">(</span><em>reward: int</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/Part1/Car1.html#LearningCar.reward_action"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Car1.LearningCar.reward_action" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rewards action taken by car using Q-Learning algorithm.</p>
 <p>Using reward argument and Q-Learning algorithm updates learns the car to
 take actions. Updates score and state for car.</p>
@@ -256,22 +257,22 @@ take actions. Updates score and state for car.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="Part1.Car.LearningCar.state">
-<code class="descname">state</code><em class="property"> = None</em><a class="headerlink" href="#Part1.Car.LearningCar.state" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Car1.LearningCar.state">
+<code class="descname">state</code><em class="property"> = None</em><a class="headerlink" href="#Part1.Car1.LearningCar.state" title="Permalink to this definition">¶</a></dt>
 <dd><p>Current state for car (default is either WAIT or DRIVE).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">state (<a class="reference internal" href="#Part1.Car.Action" title="Part1.Car.Action">Action</a>, optional)</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">state (<a class="reference internal" href="#Part1.Car1.Action" title="Part1.Car1.Action">Action</a>, optional)</td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
 
 <dl class="method">
-<dt id="Part1.Car.LearningCar.take_action">
-<code class="descname">take_action</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/Part1/Car.html#LearningCar.take_action"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Car.LearningCar.take_action" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Car1.LearningCar.take_action">
+<code class="descname">take_action</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/Part1/Car1.html#LearningCar.take_action"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Car1.LearningCar.take_action" title="Permalink to this definition">¶</a></dt>
 <dd><p>Takes action for car based on its current state and Q matrix.</p>
 <p>If all actions have equal Q value, take random action. Take action with
 biggest Q value otherwise.</p>
@@ -286,13 +287,13 @@ biggest Q value otherwise.</p>
 <div class="section" id="state-enum">
 <h3>State Enum<a class="headerlink" href="#state-enum" title="Permalink to this headline">¶</a></h3>
 <dl class="class">
-<dt id="Part1.Simulation.State">
-<em class="property">class </em><code class="descclassname">Part1.Simulation.</code><code class="descname">State</code><a class="reference internal" href="_modules/Part1/Simulation.html#State"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Simulation.State" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Simulation1.State">
+<em class="property">class </em><code class="descclassname">Part1.Simulation1.</code><code class="descname">State</code><a class="reference internal" href="_modules/Part1/Simulation1.html#State"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Simulation1.State" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.IntEnum" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">enum.IntEnum</span></code></a></p>
 <p>An enum class used to represent states in simulation.</p>
 <dl class="attribute">
-<dt id="Part1.Simulation.State.BOTH_WAIT">
-<code class="descname">BOTH_WAIT</code><em class="property"> = 1</em><a class="headerlink" href="#Part1.Simulation.State.BOTH_WAIT" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Simulation1.State.BOTH_WAIT">
+<code class="descname">BOTH_WAIT</code><em class="property"> = 1</em><a class="headerlink" href="#Part1.Simulation1.State.BOTH_WAIT" title="Permalink to this definition">¶</a></dt>
 <dd><p>Both cars wait state variable (is 1).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -305,8 +306,8 @@ biggest Q value otherwise.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="Part1.Simulation.State.CAR_1_DROVE">
-<code class="descname">CAR_1_DROVE</code><em class="property"> = 2</em><a class="headerlink" href="#Part1.Simulation.State.CAR_1_DROVE" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Simulation1.State.CAR_1_DROVE">
+<code class="descname">CAR_1_DROVE</code><em class="property"> = 2</em><a class="headerlink" href="#Part1.Simulation1.State.CAR_1_DROVE" title="Permalink to this definition">¶</a></dt>
 <dd><p>Car 1 drove while 2 waited state variable (is 2).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -319,8 +320,8 @@ biggest Q value otherwise.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="Part1.Simulation.State.CAR_2_DROVE">
-<code class="descname">CAR_2_DROVE</code><em class="property"> = 3</em><a class="headerlink" href="#Part1.Simulation.State.CAR_2_DROVE" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Simulation1.State.CAR_2_DROVE">
+<code class="descname">CAR_2_DROVE</code><em class="property"> = 3</em><a class="headerlink" href="#Part1.Simulation1.State.CAR_2_DROVE" title="Permalink to this definition">¶</a></dt>
 <dd><p>Car 2 drove while 1 waited state variable (is 3).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -333,8 +334,8 @@ biggest Q value otherwise.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="Part1.Simulation.State.CRASH">
-<code class="descname">CRASH</code><em class="property"> = 0</em><a class="headerlink" href="#Part1.Simulation.State.CRASH" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Simulation1.State.CRASH">
+<code class="descname">CRASH</code><em class="property"> = 0</em><a class="headerlink" href="#Part1.Simulation1.State.CRASH" title="Permalink to this definition">¶</a></dt>
 <dd><p>Crash state variable (is 0).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -352,8 +353,8 @@ biggest Q value otherwise.</p>
 <div class="section" id="simulation-class">
 <h3>Simulation Class<a class="headerlink" href="#simulation-class" title="Permalink to this headline">¶</a></h3>
 <dl class="class">
-<dt id="Part1.Simulation.Simulation">
-<em class="property">class </em><code class="descclassname">Part1.Simulation.</code><code class="descname">Simulation</code><span class="sig-paren">(</span><em>car1: Car.Car</em>, <em>car2: Car.Car</em>, <em>state: Part1.Simulation.State = &lt;State.BOTH_WAIT: 1&gt;</em>, <em>debug: bool = False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Part1/Simulation.html#Simulation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Simulation.Simulation" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Simulation1.Simulation">
+<em class="property">class </em><code class="descclassname">Part1.Simulation1.</code><code class="descname">Simulation</code><span class="sig-paren">(</span><em>car1: Car1.Car</em>, <em>car2: Car1.Car</em>, <em>state: Part1.Simulation1.State = &lt;State.BOTH_WAIT: 1&gt;</em>, <em>debug: bool = False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Part1/Simulation1.html#Simulation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Simulation1.Simulation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>A class for simulating one lane bridge crossing problem.</p>
 <p>It takes in two cars and uses them to simulate games finally showing a graph
@@ -361,22 +362,22 @@ with scores for each cars gained through simulation. Simulates games where
 each car tries to cross a one lane bridge. Each game lasts until both cars
 have safely crossed the bridge or crashed.</p>
 <dl class="attribute">
-<dt id="Part1.Simulation.Simulation.car1">
-<code class="descname">car1</code><em class="property"> = None</em><a class="headerlink" href="#Part1.Simulation.Simulation.car1" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Simulation1.Simulation.car1">
+<code class="descname">car1</code><em class="property"> = None</em><a class="headerlink" href="#Part1.Simulation1.Simulation.car1" title="Permalink to this definition">¶</a></dt>
 <dd><p>First car used in simulation.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">car1 (<a class="reference internal" href="#Part1.Car.Car" title="Part1.Car.Car">Car</a>)</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">car1 (<a class="reference internal" href="#Part1.Car1.Car" title="Part1.Car1.Car">Car</a>)</td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="Part1.Simulation.Simulation.car1_scores">
-<code class="descname">car1_scores</code><em class="property"> = None</em><a class="headerlink" href="#Part1.Simulation.Simulation.car1_scores" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Simulation1.Simulation.car1_scores">
+<code class="descname">car1_scores</code><em class="property"> = None</em><a class="headerlink" href="#Part1.Simulation1.Simulation.car1_scores" title="Permalink to this definition">¶</a></dt>
 <dd><p>List of scores for car 1 after each game (default is an empty list).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -389,22 +390,22 @@ have safely crossed the bridge or crashed.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="Part1.Simulation.Simulation.car2">
-<code class="descname">car2</code><em class="property"> = None</em><a class="headerlink" href="#Part1.Simulation.Simulation.car2" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Simulation1.Simulation.car2">
+<code class="descname">car2</code><em class="property"> = None</em><a class="headerlink" href="#Part1.Simulation1.Simulation.car2" title="Permalink to this definition">¶</a></dt>
 <dd><p>Second car used in simulation.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">car2 (<a class="reference internal" href="#Part1.Car.Car" title="Part1.Car.Car">Car</a>)</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">car2 (<a class="reference internal" href="#Part1.Car1.Car" title="Part1.Car1.Car">Car</a>)</td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="Part1.Simulation.Simulation.car2_scores">
-<code class="descname">car2_scores</code><em class="property"> = None</em><a class="headerlink" href="#Part1.Simulation.Simulation.car2_scores" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Simulation1.Simulation.car2_scores">
+<code class="descname">car2_scores</code><em class="property"> = None</em><a class="headerlink" href="#Part1.Simulation1.Simulation.car2_scores" title="Permalink to this definition">¶</a></dt>
 <dd><p>List of scores for car 2 after each game (default is an empty list).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -417,20 +418,20 @@ have safely crossed the bridge or crashed.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="Part1.Simulation.Simulation.check_state">
-<code class="descname">check_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/Part1/Simulation.html#Simulation.check_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Simulation.Simulation.check_state" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Simulation1.Simulation.check_state">
+<code class="descname">check_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/Part1/Simulation1.html#Simulation.check_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Simulation1.Simulation.check_state" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks game state after each car took action.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="Part1.Simulation.Simulation.cleanup_game">
-<code class="descname">cleanup_game</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/Part1/Simulation.html#Simulation.cleanup_game"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Simulation.Simulation.cleanup_game" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Simulation1.Simulation.cleanup_game">
+<code class="descname">cleanup_game</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/Part1/Simulation1.html#Simulation.cleanup_game"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Simulation1.Simulation.cleanup_game" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds scores for cars to list, resets state and drove_over for cars.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="Part1.Simulation.Simulation.debug">
-<code class="descname">debug</code><em class="property"> = False</em><a class="headerlink" href="#Part1.Simulation.Simulation.debug" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Simulation1.Simulation.debug">
+<code class="descname">debug</code><em class="property"> = False</em><a class="headerlink" href="#Part1.Simulation1.Simulation.debug" title="Permalink to this definition">¶</a></dt>
 <dd><p>Whether to print status messages to (default is False).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -443,22 +444,22 @@ have safely crossed the bridge or crashed.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="Part1.Simulation.Simulation.give_rewards">
-<code class="descname">give_rewards</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/Part1/Simulation.html#Simulation.give_rewards"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Simulation.Simulation.give_rewards" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Simulation1.Simulation.give_rewards">
+<code class="descname">give_rewards</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/Part1/Simulation1.html#Simulation.give_rewards"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Simulation1.Simulation.give_rewards" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gives rewards to each car based on current turn state.</p>
 <p>First it finds reward value based on turn state, then calls
 reward_action in each car as long as it hasn’t driven over the bridge.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="Part1.Simulation.Simulation.show_graph">
-<code class="descname">show_graph</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/Part1/Simulation.html#Simulation.show_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Simulation.Simulation.show_graph" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Simulation1.Simulation.show_graph">
+<code class="descname">show_graph</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/Part1/Simulation1.html#Simulation.show_graph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Simulation1.Simulation.show_graph" title="Permalink to this definition">¶</a></dt>
 <dd><p>Shows graph with scores for each car after simulation.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="Part1.Simulation.Simulation.simulate_games">
-<code class="descname">simulate_games</code><span class="sig-paren">(</span><em>no_games: int</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/Part1/Simulation.html#Simulation.simulate_games"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Simulation.Simulation.simulate_games" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Simulation1.Simulation.simulate_games">
+<code class="descname">simulate_games</code><span class="sig-paren">(</span><em>no_games: int</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/Part1/Simulation1.html#Simulation.simulate_games"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Simulation1.Simulation.simulate_games" title="Permalink to this definition">¶</a></dt>
 <dd><p>Simulates a given amount of games for the cars.</p>
 <p>This method runs the whole simulation calling methods in class to play
 out games and turns in the game. For each game it lets cars take action,
@@ -476,22 +477,22 @@ shows plot of car scores.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="Part1.Simulation.Simulation.state">
-<code class="descname">state</code><em class="property"> = 1</em><a class="headerlink" href="#Part1.Simulation.Simulation.state" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Simulation1.Simulation.state">
+<code class="descname">state</code><em class="property"> = 1</em><a class="headerlink" href="#Part1.Simulation1.Simulation.state" title="Permalink to this definition">¶</a></dt>
 <dd><p>State for current turn in game (default is BOTH_WAIT).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">state (<a class="reference internal" href="#Part1.Simulation.State" title="Part1.Simulation.State">State</a>, optional)</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">state (<a class="reference internal" href="#Part1.Simulation1.State" title="Part1.Simulation1.State">State</a>, optional)</td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
 
 <dl class="method">
-<dt id="Part1.Simulation.Simulation.take_actions">
-<code class="descname">take_actions</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/Part1/Simulation.html#Simulation.take_actions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Simulation.Simulation.take_actions" title="Permalink to this definition">¶</a></dt>
+<dt id="Part1.Simulation1.Simulation.take_actions">
+<code class="descname">take_actions</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/Part1/Simulation1.html#Simulation.take_actions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Part1.Simulation1.Simulation.take_actions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Lets each car that hasn’t crossed bridge take an action.</p>
 </dd></dl>
 
@@ -536,6 +537,7 @@ shows plot of car scores.</p>
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="Part2.html">Part 2</a></li>
 </ul>
 </li>
 </ul>
@@ -546,6 +548,7 @@ shows plot of car scores.</p>
   <li><a href="index.html">Documentation overview</a><ul>
   <li><a href="Assignment1.html">Assignment 1</a><ul>
       <li>Previous: <a href="Assignment1.html" title="previous chapter">Assignment 1</a></li>
+      <li>Next: <a href="Part2.html" title="next chapter">Part 2</a></li>
   </ul></li>
   </ul></li>
 </ul>

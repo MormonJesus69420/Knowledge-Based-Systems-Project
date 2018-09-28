@@ -9,19 +9,37 @@ import numpy as np
 
 @dataclass
 class Simulation:
+    """A class for simulating fixed capacity bridge crossing problem.
+
+    It takes in a list of cars that will try crossing a bridge with a fixed
+    capacity. It tries to teach them to not drive on the bridge if it is at its
+    full capacity, without telling the cars what the capacity is.
+    """
+
     bridge: Bridge = field(repr=False)
+    """Bridge used in simulation"""
+
     carpool: List[Car] = field(repr=False)
+    """List of cars that are not on bridge or in queue."""
+
     lamb: float = field(default=1.5)
+    """Lambda value for Poisson distribution"""
+
     debug: bool = field(default=False, repr=False)
+    """Boolean that decides whether or not to print some extra info to console."""
+
     queue: List[Car] = field(default_factory=list, repr=False, init=False)
+    """List of cars waiting to cross the bridge."""
 
     def get_new_cars(self) -> None:
+        """Method for getting cars from carpool into queue."""
+
         new_cars = np.random.poisson(lam=self.lamb)
 
-        if new_cars >= len(self.carpool):
-            self.queue += self.carpool
+        if new_cars >= len(self.carpool):  # All cars from carpool come to queue
+            self.queue.extend(self.carpool)
             self.carpool = list()
-        else:
+        else:  # Fewer cars than cars in carpool came
             shuffle(self.carpool)
             while new_cars > 0:
                 car = self.carpool.pop(0)
@@ -30,7 +48,7 @@ class Simulation:
                 new_cars -= 1
 
     def take_action(self, car: Car) -> None:
-        """Lets each car that hasn't crossed bridge take an action."""
+        """Lets car in queue take an action, if it drives it gets put on bridge."""
 
         car.take_action(len(self.bridge.cars))
 
@@ -38,10 +56,11 @@ class Simulation:
             self.bridge.cars.append(self.queue.pop(0))
 
     def give_reward(self, car: Car) -> None:
-        """Gives rewards to each car based on current turn state.
+        """Gives rewards to car based on its action, if bridge collapses reset cars.
 
-        First it finds reward value based on turn state, then calls
-        reward_action in each car as long as it hasn't driven over the bridge.
+        Firstly it finds the reward for car and calls reward action method,
+        before checking if bridge has collapsed, if it did it moves cars from
+        bridge back into carpool.
         """
 
         reward = -200 if self.bridge.has_collapsed() else car.get_reward()
@@ -73,16 +92,17 @@ class Simulation:
         pyplot.show()
 
     def simulate_turns(self, no_turns: int) -> None:
-        """Simulates a given amount of games for the cars.
+        """Simulates a given amount of turns for the cars.
 
-        This method runs the whole simulation calling methods in class to play
-        out games and turns in the game. For each game it lets cars take action,
-        checks turn state, and gives rewards. After each game it cleans up and
-        runs again until it has ran the required amount of games. In the end it
-        shows plot of car scores.
+        This method starts by instantiating Q matrices for cars based on bridge
+        capacity and then it simulates turns. For each turn it takes some cars
+        from carpool and moves them to queue (number depends of Poisson
+        distribution). Cars on bridge get to move and then the cars in queue get
+        to decide whether to move or not, and are rewarded based on their
+        actions. After the turns it shows score graph for cars.
 
         Arguments:
-            no_turns (int): Number of games to simulate.
+            no_turns (int): Number of turns to simulate.
         """
 
         for c in self.carpool:
@@ -103,9 +123,10 @@ class Simulation:
         self.show_graph()
 
 
-a = list()
-for _ in range(15):
-    a.append(Car())
+if __name__ == "__main__":
+    a = list()
+    for _ in range(15):
+        a.append(Car())
 
-s = Simulation(Bridge(), a, debug=True)
-s.simulate_turns(10000)
+    s = Simulation(Bridge(), a, debug=True)
+    s.simulate_turns(10000)
