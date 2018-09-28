@@ -3,7 +3,7 @@ from typing import List
 from enum import IntEnum
 from matplotlib import pyplot
 
-from Part1.Car import Action, Car, RandomCar, LearningCar
+from Car1 import Action, Car, RandomCar, LearningCar
 
 
 class State(IntEnum):

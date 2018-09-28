@@ -1,5 +1,5 @@
-from Part2.Car import Car, Action
-from Part2.Bridge import Bridge
+from Car2 import Car, Action
+from Bridge2 import Bridge
 from dataclasses import dataclass, field
 from typing import List
 from matplotlib import pyplot
@@ -12,8 +12,8 @@ class Simulation:
     bridge: Bridge = field(repr=False)
     carpool: List[Car] = field(repr=False)
     lamb: float = field(default=1.5)
+    debug: bool = field(default=False, repr=False)
     queue: List[Car] = field(default_factory=list, repr=False, init=False)
-    debug: bool = field(default=False, repr=False, init=False)
 
     def get_new_cars(self) -> None:
         new_cars = np.random.poisson(lam=self.lamb)
@@ -24,13 +24,15 @@ class Simulation:
         else:
             shuffle(self.carpool)
             while new_cars > 0:
-                self.queue.append(self.carpool.pop(0))
+                car = self.carpool.pop(0)
+                car.distance_on_bridge = 0
+                self.queue.append(car)
                 new_cars -= 1
 
     def take_action(self, car: Car) -> None:
         """Lets each car that hasn't crossed bridge take an action."""
 
-        car.take_action(len(self.bridge.cars) - 1)
+        car.take_action(len(self.bridge.cars))
 
         if car.action == Action.DRIVE:
             self.bridge.cars.append(self.queue.pop(0))
@@ -47,7 +49,7 @@ class Simulation:
         car.reward_action(reward)
 
         if self.bridge.has_collapsed():
-            self.carpool += self.bridge.collapse()
+            self.carpool += self.bridge.collapse_bridge()
 
     def show_graph(self) -> None:
         """Shows graph with scores for each car after simulation."""
@@ -66,7 +68,7 @@ class Simulation:
         pyplot.legend(handles=handles, loc='center left', bbox_to_anchor=(1, 0.5))
 
         pyplot.ylabel("Score")
-        pyplot.xlabel("Bridge crossings")
+        pyplot.xlabel("Actions")
 
         pyplot.show()
 
@@ -84,7 +86,7 @@ class Simulation:
         """
 
         for c in self.carpool:
-            c.q_matrix = [0] * (self.bridge.capacity + 1)
+            c.q_matrix = [0] * (self.bridge.capacity + 2)
 
         for _ in range(no_turns):
             self.get_new_cars()
@@ -105,5 +107,5 @@ a = list()
 for _ in range(15):
     a.append(Car())
 
-s = Simulation(Bridge(), a)
+s = Simulation(Bridge(), a, debug=True)
 s.simulate_turns(10000)

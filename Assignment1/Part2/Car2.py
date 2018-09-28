@@ -5,7 +5,7 @@ from random import choice
 
 
 def reward_matrix():
-    return [-10, 100]
+    return [-1, 100]
 
 
 class Action(IntEnum):
@@ -95,9 +95,9 @@ class Car:
         s = self.state  # Current state
         q = self.q_matrix[s + a]  # Q value for state change
 
-        if s + a == len(self.q_matrix):  # Terminating state (bridge collapsed)
-            q_next = q
-        else:  # Non-terminating state (bridge is still up
+        if s + a + 1 >= len(self.q_matrix):  # Terminating state (bridge collapsed)
+            q_next = 0
+        else:  # Non-terminating state (bridge is still up)
             q_next = max(self.q_matrix[s + a], self.q_matrix[s + a + 1])
 
         # Update value in Q matrix
