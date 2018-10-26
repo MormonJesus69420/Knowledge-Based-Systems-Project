@@ -1,5 +1,5 @@
 # Documentation
-Documentation and general usage guide for project in STE6246 Knowledge Based Systems Project. 
+Documentation and general usage guide for project in STE6246 Knowledge Based Systems Project. Assignment 2 runs on Tensorflow-GPU insted of oridinary Tensorflow as it allows me to cut on training time by a factor of 10 for each epoch. So instead of using 60 seconds per epoch I am only using 6.
 
 ## Prerequisites
 ### Python
@@ -8,7 +8,7 @@ Documentation and general usage guide for project in STE6246 Knowledge Based Sys
  * CUDA 9.0 **exactly** is required to run Assignment 2. (Required by Tensorflow on GPU). [CUDA](https://developer.nvidia.com/cuda-zone)
  * cuDNN 7.2.1 **exactly** is required to run Assignment 2 (Required by Tensorflow on GPU). [cuDNN](https://developer.nvidia.com/cudnn)
  * pyenv for managing separate versions of Python on same pc. [pyenv](https://github.com/pyenv/pyenv)
- * pyenv-virtualenv for managing virtual environments. [pyenv-virtualenv]https://github.com/pyenv/pyenv-virtualenv
+ * pyenv-virtualenv for managing virtual environments. [pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv)
 
 ### Libraries
 These libraries are necessary for my project, they are installed in the [Setting Up Code](#Setting-Up-Code).

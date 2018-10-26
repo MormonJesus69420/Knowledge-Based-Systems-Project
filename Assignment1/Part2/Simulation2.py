@@ -41,11 +41,8 @@ class Simulation:
             self.carpool = list()
         else:  # Fewer cars than cars in carpool came
             shuffle(self.carpool)
-            while new_cars > 0:
-                car = self.carpool.pop(0)
-                car.distance_on_bridge = 0
-                self.queue.append(car)
-                new_cars -= 1
+            self.queue.extend(self.carpool[:len(self.carpool) - new_cars])
+            del self.carpool[:len(self.carpool) - new_cars]
 
     def take_action(self, car: Car) -> None:
         """Lets car in queue take an action, if it drives it gets put on bridge."""
@@ -128,5 +125,5 @@ if __name__ == "__main__":
     for _ in range(15):
         a.append(Car())
 
-    s = Simulation(Bridge(), a, debug=True)
+    s = Simulation(Bridge(), a)
     s.simulate_turns(100000)

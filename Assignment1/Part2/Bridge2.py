@@ -40,7 +40,9 @@ class Bridge:
         finished_cars = list()
         for c in self.cars:
             c.distance_on_bridge += c.speed
+
             if c.distance_on_bridge >= self.length:
+                c.distance_on_bridge = 0
                 finished_cars.append(c)
 
         self.cars = [c for c in self.cars if c not in finished_cars]
@@ -55,6 +57,9 @@ class Bridge:
         """
 
         temp = self.cars
+        for c in temp:
+            c.distance_on_bridge = 0
+
         self.cars = list()
 
         return temp
