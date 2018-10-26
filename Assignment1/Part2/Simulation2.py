@@ -129,4 +129,4 @@ if __name__ == "__main__":
         a.append(Car())
 
     s = Simulation(Bridge(), a, debug=True)
-    s.simulate_turns(10000)
+    s.simulate_turns(100000)

@@ -158,5 +158,5 @@ if __name__ == "__main__":
     random.simulate_games(1000)
 
     print("Q-Learning cars")
-    learn = Simulation(LearningCar(), LearningCar(), debug=True)
+    learn = Simulation(LearningCar(), LearningCar())
     learn.simulate_games(1000)

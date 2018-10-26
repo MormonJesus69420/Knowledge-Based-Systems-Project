@@ -61,7 +61,7 @@ class Car:
     learn_factor: float = field(default=0.9, repr=False, init=False)
     """learn_factor (float): Learning factor for car (default is 0.9)."""
 
-    decay_factor: float = field(default=0.5, repr=False, init=False)
+    decay_factor: float = field(default=0.66, repr=False, init=False)
     """decay_factor (float): Decay factor for car (default is 0.5)."""
 
     distance_on_bridge: int = field(default=0, repr=False, init=False)
