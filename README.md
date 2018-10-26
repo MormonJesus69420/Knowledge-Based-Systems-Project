@@ -69,10 +69,10 @@ To close the virtual environment simply end your terminal session or run `pyenv 
 
 ## Acknowledgments
 **Christopher Kragebøl Hagerup** - *Developer and weeb* -
-[CodeRefinery](https://source.coderefinery.org/Krahager)
+[CodeRefinery](https://source.coderefinery.org/Krahager)  
 **Kent Arne Larsen** - *Developer and boomer* -
-[CodeRefinery](https://source.coderefinery.org/kla096)
+[CodeRefinery](https://source.coderefinery.org/kla096)  
 **Hans Victor Andersson Lindbäck** - *Developer and svenskefæn* -
-[CodeRefinery](https://source.coderefinery.org/hli039)
+[CodeRefinery](https://source.coderefinery.org/hli039)  
 **Olav Kjartan Larseng** - *Developer and c-menneske* -
 [CodeRefinery](https://source.coderefinery.org/ola014)
