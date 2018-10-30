@@ -57,7 +57,6 @@ qtc-gdbmacros
 *.aux
 *.bbl
 *.blg
-*.log
 *.out
 *.gz
 
@@ -91,7 +90,6 @@ out/
 *.ear
 *.iml
 *.jar
-*.log
 *.rar
 *.war
 *.zip

@@ -67,11 +67,11 @@ batch_size = 512  # 64 originally
 epochs = 20  # 20 originally
 num_classes = 10
 
-#
-# Without dropout:
-# Test loss :  0.2559400901377201
-# Test accuracy :  0.9131
-#
+# #
+# # Without dropout:
+# # Test loss :  0.2559400901377201
+# # Test accuracy :  0.9131
+# #
 # # Create a training model layers
 # fashion_model = Sequential()
 # fashion_model.add(Conv2D(32, kernel_size=(3, 3), activation='linear', input_shape=(28, 28, 1), padding='same'))
