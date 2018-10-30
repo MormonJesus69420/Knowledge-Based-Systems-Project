@@ -1,0 +1,383 @@
+Test loss kernel: (1, 1) stride: (1, 1):  1.0815084451675414
+Test accuracy kernel: (1, 1) stride: (1, 1):  0.6268
+
+Test loss kernel: (1, 1) stride: (1, 1) dropout:  1.2722497869491578
+Test accuracy kernel: (1, 1) stride: (1, 1) dropout:  0.557
+
+Test loss kernel: (1, 1) stride: (2, 2):  1.8681816387176513
+Test accuracy kernel: (1, 1) stride: (2, 2):  0.3181
+
+Test loss kernel: (1, 1) stride: (2, 2) dropout:  1.926397243118286
+Test accuracy kernel: (1, 1) stride: (2, 2) dropout:  0.288
+
+Test loss kernel: (1, 1) stride: (3, 3):  1.7901469791412354
+Test accuracy kernel: (1, 1) stride: (3, 3):  0.3509
+
+Test loss kernel: (1, 1) stride: (3, 3) dropout:  1.8535780296325683
+Test accuracy kernel: (1, 1) stride: (3, 3) dropout:  0.3243
+
+Test loss kernel: (1, 1) stride: (4, 4):  2.0159026206970214
+Test accuracy kernel: (1, 1) stride: (4, 4):  0.2494
+
+Test loss kernel: (1, 1) stride: (4, 4) dropout:  2.040104856109619
+Test accuracy kernel: (1, 1) stride: (4, 4) dropout:  0.2411
+
+Test loss kernel: (1, 1) stride: (5, 5):  1.9987702138900756
+Test accuracy kernel: (1, 1) stride: (5, 5):  0.2526
+
+Test loss kernel: (1, 1) stride: (5, 5) dropout:  2.016099222755432
+Test accuracy kernel: (1, 1) stride: (5, 5) dropout:  0.2469
+
+Test loss kernel: (1, 1) stride: (6, 6):  1.9810584512710572
+Test accuracy kernel: (1, 1) stride: (6, 6):  0.2615
+
+Test loss kernel: (1, 1) stride: (6, 6) dropout:  2.008290562438965
+Test accuracy kernel: (1, 1) stride: (6, 6) dropout:  0.2492
+
+Test loss kernel: (1, 1) stride: (7, 7):  1.9768957511901855
+Test accuracy kernel: (1, 1) stride: (7, 7):  0.2626
+
+Test loss kernel: (1, 1) stride: (7, 7) dropout:  1.9926746417999268
+Test accuracy kernel: (1, 1) stride: (7, 7) dropout:  0.2564
+
+Test loss kernel: (1, 1) stride: (8, 8):  1.9622363849639892
+Test accuracy kernel: (1, 1) stride: (8, 8):  0.2695
+
+Test loss kernel: (1, 1) stride: (8, 8) dropout:  1.9818434804916383
+Test accuracy kernel: (1, 1) stride: (8, 8) dropout:  0.2627
+
+Test loss kernel: (2, 2) stride: (1, 1):  1.0680283685684204
+Test accuracy kernel: (2, 2) stride: (1, 1):  0.7074
+
+Test loss kernel: (2, 2) stride: (1, 1) dropout:  0.7829016129493713
+Test accuracy kernel: (2, 2) stride: (1, 1) dropout:  0.7329
+
+Test loss kernel: (2, 2) stride: (2, 2):  1.146897845363617
+Test accuracy kernel: (2, 2) stride: (2, 2):  0.5965
+
+Test loss kernel: (2, 2) stride: (2, 2) dropout:  1.1612511493682862
+Test accuracy kernel: (2, 2) stride: (2, 2) dropout:  0.5787
+
+Test loss kernel: (2, 2) stride: (3, 3):  1.4402382274627685
+Test accuracy kernel: (2, 2) stride: (3, 3):  0.4838
+
+Test loss kernel: (2, 2) stride: (3, 3) dropout:  1.5158159915924072
+Test accuracy kernel: (2, 2) stride: (3, 3) dropout:  0.4544
+
+Test loss kernel: (2, 2) stride: (4, 4):  1.6740278926849366
+Test accuracy kernel: (2, 2) stride: (4, 4):  0.4037
+
+Test loss kernel: (2, 2) stride: (4, 4) dropout:  1.7172579357147217
+Test accuracy kernel: (2, 2) stride: (4, 4) dropout:  0.3827
+
+Test loss kernel: (2, 2) stride: (5, 5):  1.5581394300460816
+Test accuracy kernel: (2, 2) stride: (5, 5):  0.4467
+
+Test loss kernel: (2, 2) stride: (5, 5) dropout:  1.607583433151245
+Test accuracy kernel: (2, 2) stride: (5, 5) dropout:  0.4316
+
+Test loss kernel: (2, 2) stride: (6, 6):  1.5627053470611572
+Test accuracy kernel: (2, 2) stride: (6, 6):  0.444
+
+Test loss kernel: (2, 2) stride: (6, 6) dropout:  1.5823926773071288
+Test accuracy kernel: (2, 2) stride: (6, 6) dropout:  0.4304
+
+Test loss kernel: (2, 2) stride: (7, 7):  1.5560983251571656
+Test accuracy kernel: (2, 2) stride: (7, 7):  0.4366
+
+Test loss kernel: (2, 2) stride: (7, 7) dropout:  1.5923863634109496
+Test accuracy kernel: (2, 2) stride: (7, 7) dropout:  0.4265
+
+Test loss kernel: (2, 2) stride: (8, 8):  1.5456089155197144
+Test accuracy kernel: (2, 2) stride: (8, 8):  0.4489
+
+Test loss kernel: (2, 2) stride: (8, 8) dropout:  1.6090988355636597
+Test accuracy kernel: (2, 2) stride: (8, 8) dropout:  0.4193
+
+Test loss kernel: (3, 3) stride: (1, 1):  1.6053480060577392
+Test accuracy kernel: (3, 3) stride: (1, 1):  0.7064
+
+Test loss kernel: (3, 3) stride: (1, 1) dropout:  0.656766930103302::::::BEST
+Test accuracy kernel: (3, 3) stride: (1, 1) dropout:  0.7814::::::BEST
+
+Test loss kernel: (3, 3) stride: (2, 2):  1.079128256893158
+Test accuracy kernel: (3, 3) stride: (2, 2):  0.6368
+
+Test loss kernel: (3, 3) stride: (2, 2) dropout:  1.0050794340133666
+Test accuracy kernel: (3, 3) stride: (2, 2) dropout:  0.6432
+
+Test loss kernel: (3, 3) stride: (3, 3):  1.1668357597351073
+Test accuracy kernel: (3, 3) stride: (3, 3):  0.5884
+
+Test loss kernel: (3, 3) stride: (3, 3) dropout:  1.1792495897293092
+Test accuracy kernel: (3, 3) stride: (3, 3) dropout:  0.5748
+
+Test loss kernel: (3, 3) stride: (4, 4):  1.3585628915786743
+Test accuracy kernel: (3, 3) stride: (4, 4):  0.5218
+
+Test loss kernel: (3, 3) stride: (4, 4) dropout:  1.3556598778724671
+Test accuracy kernel: (3, 3) stride: (4, 4) dropout:  0.518
+
+Test loss kernel: (3, 3) stride: (5, 5):  1.277506524848938
+Test accuracy kernel: (3, 3) stride: (5, 5):  0.5478
+
+Test loss kernel: (3, 3) stride: (5, 5) dropout:  1.3002217288970948
+Test accuracy kernel: (3, 3) stride: (5, 5) dropout:  0.5404
+
+Test loss kernel: (3, 3) stride: (6, 6):  1.3001524149894714
+Test accuracy kernel: (3, 3) stride: (6, 6):  0.5364
+
+Test loss kernel: (3, 3) stride: (6, 6) dropout:  1.3181657539367675
+Test accuracy kernel: (3, 3) stride: (6, 6) dropout:  0.5316
+
+Test loss kernel: (3, 3) stride: (7, 7):  1.3730428846359253
+Test accuracy kernel: (3, 3) stride: (7, 7):  0.5084
+
+Test loss kernel: (3, 3) stride: (7, 7) dropout:  1.3518740755081178
+Test accuracy kernel: (3, 3) stride: (7, 7) dropout:  0.5125
+
+Test loss kernel: (3, 3) stride: (8, 8):  1.5151134311676024
+Test accuracy kernel: (3, 3) stride: (8, 8):  0.4541
+
+Test loss kernel: (3, 3) stride: (8, 8) dropout:  1.5579074390411376
+Test accuracy kernel: (3, 3) stride: (8, 8) dropout:  0.4339
+
+Test loss kernel: (4, 4) stride: (1, 1):  1.9749718685150146
+Test accuracy kernel: (4, 4) stride: (1, 1):  0.7194
+
+Test loss kernel: (4, 4) stride: (1, 1) dropout:  0.7393791708946228
+Test accuracy kernel: (4, 4) stride: (1, 1) dropout:  0.7687
+
+Test loss kernel: (4, 4) stride: (2, 2):  1.0895163628578186
+Test accuracy kernel: (4, 4) stride: (2, 2):  0.6517
+
+Test loss kernel: (4, 4) stride: (2, 2) dropout:  0.9217270944595337
+Test accuracy kernel: (4, 4) stride: (2, 2) dropout:  0.6739
+
+Test loss kernel: (4, 4) stride: (3, 3):  1.1924198669433594
+Test accuracy kernel: (4, 4) stride: (3, 3):  0.5928
+
+Test loss kernel: (4, 4) stride: (3, 3) dropout:  1.076804594230652
+Test accuracy kernel: (4, 4) stride: (3, 3) dropout:  0.6154
+
+Test loss kernel: (4, 4) stride: (4, 4):  1.1364858839035035
+Test accuracy kernel: (4, 4) stride: (4, 4):  0.6042
+
+Test loss kernel: (4, 4) stride: (4, 4) dropout:  1.131342308807373
+Test accuracy kernel: (4, 4) stride: (4, 4) dropout:  0.6007
+
+Test loss kernel: (4, 4) stride: (5, 5):  1.2101660594940185
+Test accuracy kernel: (4, 4) stride: (5, 5):  0.5757
+
+Test loss kernel: (4, 4) stride: (5, 5) dropout:  1.2014200511932374
+Test accuracy kernel: (4, 4) stride: (5, 5) dropout:  0.5686
+
+Test loss kernel: (4, 4) stride: (6, 6):  1.2577648597717286
+Test accuracy kernel: (4, 4) stride: (6, 6):  0.5545
+
+Test loss kernel: (4, 4) stride: (6, 6) dropout:  1.2981888401031494
+Test accuracy kernel: (4, 4) stride: (6, 6) dropout:  0.538
+
+Test loss kernel: (4, 4) stride: (7, 7):  1.3386894073486328
+Test accuracy kernel: (4, 4) stride: (7, 7):  0.5293
+
+Test loss kernel: (4, 4) stride: (7, 7) dropout:  1.3585050262451173
+Test accuracy kernel: (4, 4) stride: (7, 7) dropout:  0.5119
+
+Test loss kernel: (4, 4) stride: (8, 8):  1.5031619945526122
+Test accuracy kernel: (4, 4) stride: (8, 8):  0.4502
+
+Test loss kernel: (4, 4) stride: (8, 8) dropout:  1.5499729057312013
+Test accuracy kernel: (4, 4) stride: (8, 8) dropout:  0.4373
+
+Test loss kernel: (5, 5) stride: (1, 1):  2.023271001148224
+Test accuracy kernel: (5, 5) stride: (1, 1):  0.7235
+
+Test loss kernel: (5, 5) stride: (1, 1) dropout:  0.7598384120941162
+Test accuracy kernel: (5, 5) stride: (1, 1) dropout:  0.7722
+
+Test loss kernel: (5, 5) stride: (2, 2):  1.1825310914993286
+Test accuracy kernel: (5, 5) stride: (2, 2):  0.6487
+
+Test loss kernel: (5, 5) stride: (2, 2) dropout:  0.8921874733924866
+Test accuracy kernel: (5, 5) stride: (2, 2) dropout:  0.6894
+
+Test loss kernel: (5, 5) stride: (3, 3):  1.2933370807647706
+Test accuracy kernel: (5, 5) stride: (3, 3):  0.5953
+
+Test loss kernel: (5, 5) stride: (3, 3) dropout:  1.0699909326553345
+Test accuracy kernel: (5, 5) stride: (3, 3) dropout:  0.6158
+
+Test loss kernel: (5, 5) stride: (4, 4):  1.2428070596694947
+Test accuracy kernel: (5, 5) stride: (4, 4):  0.5806
+
+Test loss kernel: (5, 5) stride: (4, 4) dropout:  1.1348267002105712
+Test accuracy kernel: (5, 5) stride: (4, 4) dropout:  0.5952
+
+Test loss kernel: (5, 5) stride: (5, 5):  1.1788749102592468
+Test accuracy kernel: (5, 5) stride: (5, 5):  0.5902
+
+Test loss kernel: (5, 5) stride: (5, 5) dropout:  1.1621134172439576
+Test accuracy kernel: (5, 5) stride: (5, 5) dropout:  0.5839
+
+Test loss kernel: (5, 5) stride: (6, 6):  1.2809731533050537
+Test accuracy kernel: (5, 5) stride: (6, 6):  0.5474
+
+Test loss kernel: (5, 5) stride: (6, 6) dropout:  1.2898418634414672
+Test accuracy kernel: (5, 5) stride: (6, 6) dropout:  0.5413
+
+Test loss kernel: (5, 5) stride: (7, 7):  1.3200792387008666
+Test accuracy kernel: (5, 5) stride: (7, 7):  0.5285
+
+Test loss kernel: (5, 5) stride: (7, 7) dropout:  1.3333333976745605
+Test accuracy kernel: (5, 5) stride: (7, 7) dropout:  0.5187
+
+Test loss kernel: (5, 5) stride: (8, 8):  1.4493059032440185
+Test accuracy kernel: (5, 5) stride: (8, 8):  0.4739
+
+Test loss kernel: (5, 5) stride: (8, 8) dropout:  1.495022220993042
+Test accuracy kernel: (5, 5) stride: (8, 8) dropout:  0.46
+
+Test loss kernel: (6, 6) stride: (1, 1):  2.1873633501052856
+Test accuracy kernel: (6, 6) stride: (1, 1):  0.7092
+
+Test loss kernel: (6, 6) stride: (1, 1) dropout:  0.7999796414375305
+Test accuracy kernel: (6, 6) stride: (1, 1) dropout:  0.7659
+
+Test loss kernel: (6, 6) stride: (2, 2):  1.4609178155899047
+Test accuracy kernel: (6, 6) stride: (2, 2):  0.6405
+
+Test loss kernel: (6, 6) stride: (2, 2) dropout:  0.911052762889862
+Test accuracy kernel: (6, 6) stride: (2, 2) dropout:  0.6776
+
+Test loss kernel: (6, 6) stride: (3, 3):  1.3959572731018066
+Test accuracy kernel: (6, 6) stride: (3, 3):  0.6045
+
+Test loss kernel: (6, 6) stride: (3, 3) dropout:  0.9966371125221253
+Test accuracy kernel: (6, 6) stride: (3, 3) dropout:  0.6491
+
+Test loss kernel: (6, 6) stride: (4, 4):  1.1318296825408936
+Test accuracy kernel: (6, 6) stride: (4, 4):  0.6064
+
+Test loss kernel: (6, 6) stride: (4, 4) dropout:  1.1238302101135254
+Test accuracy kernel: (6, 6) stride: (4, 4) dropout:  0.5995
+
+Test loss kernel: (6, 6) stride: (5, 5):  1.1662773170471192
+Test accuracy kernel: (6, 6) stride: (5, 5):  0.5921
+
+Test loss kernel: (6, 6) stride: (5, 5) dropout:  1.1622886518478392
+Test accuracy kernel: (6, 6) stride: (5, 5) dropout:  0.5864
+
+Test loss kernel: (6, 6) stride: (6, 6):  1.210583679294586
+Test accuracy kernel: (6, 6) stride: (6, 6):  0.573
+
+Test loss kernel: (6, 6) stride: (6, 6) dropout:  1.274500692176819
+Test accuracy kernel: (6, 6) stride: (6, 6) dropout:  0.541
+
+Test loss kernel: (6, 6) stride: (7, 7):  1.2696851873397828
+Test accuracy kernel: (6, 6) stride: (7, 7):  0.5454
+
+Test loss kernel: (6, 6) stride: (7, 7) dropout:  1.2916503887176514
+Test accuracy kernel: (6, 6) stride: (7, 7) dropout:  0.539
+
+Test loss kernel: (6, 6) stride: (8, 8):  1.4091357355117797
+Test accuracy kernel: (6, 6) stride: (8, 8):  0.4925
+
+Test loss kernel: (6, 6) stride: (8, 8) dropout:  1.4884706840515136
+Test accuracy kernel: (6, 6) stride: (8, 8) dropout:  0.46
+
+Test loss kernel: (7, 7) stride: (1, 1):  2.2288956523895265
+Test accuracy kernel: (7, 7) stride: (1, 1):  0.7079
+
+Test loss kernel: (7, 7) stride: (1, 1) dropout:  0.9902717564105987
+Test accuracy kernel: (7, 7) stride: (1, 1) dropout:  0.7417
+
+Test loss kernel: (7, 7) stride: (2, 2):  1.8701946046829223
+Test accuracy kernel: (7, 7) stride: (2, 2):  0.6301
+
+Test loss kernel: (7, 7) stride: (2, 2) dropout:  0.8963401462554932
+Test accuracy kernel: (7, 7) stride: (2, 2) dropout:  0.6907
+
+Test loss kernel: (7, 7) stride: (3, 3):  1.7292348400115967
+Test accuracy kernel: (7, 7) stride: (3, 3):  0.6017
+
+Test loss kernel: (7, 7) stride: (3, 3) dropout:  1.0002148750305175
+Test accuracy kernel: (7, 7) stride: (3, 3) dropout:  0.6505
+
+Test loss kernel: (7, 7) stride: (4, 4):  1.155897332572937
+Test accuracy kernel: (7, 7) stride: (4, 4):  0.6078
+
+Test loss kernel: (7, 7) stride: (4, 4) dropout:  1.0872939641952515
+Test accuracy kernel: (7, 7) stride: (4, 4) dropout:  0.614
+
+Test loss kernel: (7, 7) stride: (5, 5):  1.1493108896255493
+Test accuracy kernel: (7, 7) stride: (5, 5):  0.5994
+
+Test loss kernel: (7, 7) stride: (5, 5) dropout:  1.1623625886917115
+Test accuracy kernel: (7, 7) stride: (5, 5) dropout:  0.5795
+
+Test loss kernel: (7, 7) stride: (6, 6):  1.2154563274383545
+Test accuracy kernel: (7, 7) stride: (6, 6):  0.5618
+
+Test loss kernel: (7, 7) stride: (6, 6) dropout:  1.2710991718292237
+Test accuracy kernel: (7, 7) stride: (6, 6) dropout:  0.5465
+
+Test loss kernel: (7, 7) stride: (7, 7):  1.3071095027923585
+Test accuracy kernel: (7, 7) stride: (7, 7):  0.5333
+
+Test loss kernel: (7, 7) stride: (7, 7) dropout:  1.3035701089859009
+Test accuracy kernel: (7, 7) stride: (7, 7) dropout:  0.5332
+
+Test loss kernel: (7, 7) stride: (8, 8):  1.4269342395782472
+Test accuracy kernel: (7, 7) stride: (8, 8):  0.4945
+
+Test loss kernel: (7, 7) stride: (8, 8) dropout:  1.4422943817138671
+Test accuracy kernel: (7, 7) stride: (8, 8) dropout:  0.4774
+
+Test loss kernel: (8, 8) stride: (1, 1):  2.532572131729126
+Test accuracy kernel: (8, 8) stride: (1, 1):  0.6697
+
+Test loss kernel: (8, 8) stride: (1, 1) dropout:  1.1019191333770753
+Test accuracy kernel: (8, 8) stride: (1, 1) dropout:  0.7346
+
+Test loss kernel: (8, 8) stride: (2, 2):  2.366799172401428
+Test accuracy kernel: (8, 8) stride: (2, 2):  0.6192
+
+Test loss kernel: (8, 8) stride: (2, 2) dropout:  0.9115167842864991
+Test accuracy kernel: (8, 8) stride: (2, 2) dropout:  0.6851
+
+Test loss kernel: (8, 8) stride: (3, 3):  2.0342980686187744
+Test accuracy kernel: (8, 8) stride: (3, 3):  0.6012
+
+Test loss kernel: (8, 8) stride: (3, 3) dropout:  1.0182963376998901
+Test accuracy kernel: (8, 8) stride: (3, 3) dropout:  0.6507
+
+Test loss kernel: (8, 8) stride: (4, 4):  1.1441893297195433
+Test accuracy kernel: (8, 8) stride: (4, 4):  0.6045
+
+Test loss kernel: (8, 8) stride: (4, 4) dropout:  1.0870103517532348
+Test accuracy kernel: (8, 8) stride: (4, 4) dropout:  0.6148
+
+Test loss kernel: (8, 8) stride: (5, 5):  1.17281978225708
+Test accuracy kernel: (8, 8) stride: (5, 5):  0.5928
+
+Test loss kernel: (8, 8) stride: (5, 5) dropout:  1.1588130729675292
+Test accuracy kernel: (8, 8) stride: (5, 5) dropout:  0.5863
+
+Test loss kernel: (8, 8) stride: (6, 6):  1.2839711610794067
+Test accuracy kernel: (8, 8) stride: (6, 6):  0.5495
+
+Test loss kernel: (8, 8) stride: (6, 6) dropout:  1.242049803543091
+Test accuracy kernel: (8, 8) stride: (6, 6) dropout:  0.5502
+
+Test loss kernel: (8, 8) stride: (7, 7):  1.305949288368225
+Test accuracy kernel: (8, 8) stride: (7, 7):  0.5396
+
+Test loss kernel: (8, 8) stride: (7, 7) dropout:  1.2961026411056518
+Test accuracy kernel: (8, 8) stride: (7, 7) dropout:  0.5333
+
+Test loss kernel: (8, 8) stride: (8, 8):  1.380900682067871
+Test accuracy kernel: (8, 8) stride: (8, 8):  0.5109
+
+Test loss kernel: (8, 8) stride: (8, 8) dropout:  1.460533309364319
+Test accuracy kernel: (8, 8) stride: (8, 8) dropout:  0.4698
