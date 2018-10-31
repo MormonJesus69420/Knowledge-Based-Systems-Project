@@ -42,7 +42,7 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 
-<div class="viewcode-block" id="Simulation"><a class="viewcode-back" href="../../Part2.html#Part2.Simulation2.Simulation">[docs]</a><span class="nd">@dataclass</span>
+<div class="viewcode-block" id="Simulation"><a class="viewcode-back" href="../../Ass1Part2.html#Part2.Simulation2.Simulation">[docs]</a><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">Simulation</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;A class for simulating fixed capacity bridge crossing problem.</span>
 
@@ -66,7 +66,7 @@
     <span class="n">queue</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Car</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">,</span> <span class="nb">repr</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="sd">&quot;&quot;&quot;List of cars waiting to cross the bridge.&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="Simulation.get_new_cars"><a class="viewcode-back" href="../../Part2.html#Part2.Simulation2.Simulation.get_new_cars">[docs]</a>    <span class="k">def</span> <span class="nf">get_new_cars</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="Simulation.get_new_cars"><a class="viewcode-back" href="../../Ass1Part2.html#Part2.Simulation2.Simulation.get_new_cars">[docs]</a>    <span class="k">def</span> <span class="nf">get_new_cars</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Method for getting cars from carpool into queue.&quot;&quot;&quot;</span>
 
         <span class="n">new_cars</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="n">lam</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">lamb</span><span class="p">)</span>
@@ -76,13 +76,10 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">carpool</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>  <span class="c1"># Fewer cars than cars in carpool came</span>
             <span class="n">shuffle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">carpool</span><span class="p">)</span>
-            <span class="k">while</span> <span class="n">new_cars</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">car</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">carpool</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-                <span class="n">car</span><span class="o">.</span><span class="n">distance_on_bridge</span> <span class="o">=</span> <span class="mi">0</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">car</span><span class="p">)</span>
-                <span class="n">new_cars</span> <span class="o">-=</span> <span class="mi">1</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">queue</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">carpool</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">carpool</span><span class="p">)</span> <span class="o">-</span> <span class="n">new_cars</span><span class="p">])</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">carpool</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">carpool</span><span class="p">)</span> <span class="o">-</span> <span class="n">new_cars</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="Simulation.take_action"><a class="viewcode-back" href="../../Part2.html#Part2.Simulation2.Simulation.take_action">[docs]</a>    <span class="k">def</span> <span class="nf">take_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">car</span><span class="p">:</span> <span class="n">Car</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="Simulation.take_action"><a class="viewcode-back" href="../../Ass1Part2.html#Part2.Simulation2.Simulation.take_action">[docs]</a>    <span class="k">def</span> <span class="nf">take_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">car</span><span class="p">:</span> <span class="n">Car</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Lets car in queue take an action, if it drives it gets put on bridge.&quot;&quot;&quot;</span>
 
         <span class="n">car</span><span class="o">.</span><span class="n">take_action</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">bridge</span><span class="o">.</span><span class="n">cars</span><span class="p">))</span>
@@ -90,7 +87,7 @@
         <span class="k">if</span> <span class="n">car</span><span class="o">.</span><span class="n">action</span> <span class="o">==</span> <span class="n">Action</span><span class="o">.</span><span class="n">DRIVE</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">bridge</span><span class="o">.</span><span class="n">cars</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">queue</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="Simulation.give_reward"><a class="viewcode-back" href="../../Part2.html#Part2.Simulation2.Simulation.give_reward">[docs]</a>    <span class="k">def</span> <span class="nf">give_reward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">car</span><span class="p">:</span> <span class="n">Car</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="Simulation.give_reward"><a class="viewcode-back" href="../../Ass1Part2.html#Part2.Simulation2.Simulation.give_reward">[docs]</a>    <span class="k">def</span> <span class="nf">give_reward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">car</span><span class="p">:</span> <span class="n">Car</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Gives rewards to car based on its action, if bridge collapses reset cars.</span>
 
 <span class="sd">        Firstly it finds the reward for car and calls reward action method,</span>
@@ -105,7 +102,7 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">bridge</span><span class="o">.</span><span class="n">has_collapsed</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">carpool</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bridge</span><span class="o">.</span><span class="n">collapse_bridge</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="Simulation.show_graph"><a class="viewcode-back" href="../../Part2.html#Part2.Simulation2.Simulation.show_graph">[docs]</a>    <span class="k">def</span> <span class="nf">show_graph</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="Simulation.show_graph"><a class="viewcode-back" href="../../Ass1Part2.html#Part2.Simulation2.Simulation.show_graph">[docs]</a>    <span class="k">def</span> <span class="nf">show_graph</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Shows graph with scores for each car after simulation.&quot;&quot;&quot;</span>
 
         <span class="n">handles</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
@@ -126,7 +123,7 @@
 
         <span class="n">pyplot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="Simulation.simulate_turns"><a class="viewcode-back" href="../../Part2.html#Part2.Simulation2.Simulation.simulate_turns">[docs]</a>    <span class="k">def</span> <span class="nf">simulate_turns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">no_turns</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="Simulation.simulate_turns"><a class="viewcode-back" href="../../Ass1Part2.html#Part2.Simulation2.Simulation.simulate_turns">[docs]</a>    <span class="k">def</span> <span class="nf">simulate_turns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">no_turns</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Simulates a given amount of turns for the cars.</span>
 
 <span class="sd">        This method starts by instantiating Q matrices for cars based on bridge</span>
@@ -163,7 +160,7 @@
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">15</span><span class="p">):</span>
         <span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Car</span><span class="p">())</span>
 
-    <span class="n">s</span> <span class="o">=</span> <span class="n">Simulation</span><span class="p">(</span><span class="n">Bridge</span><span class="p">(),</span> <span class="n">a</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">Simulation</span><span class="p">(</span><span class="n">Bridge</span><span class="p">(),</span> <span class="n">a</span><span class="p">)</span>
     <span class="n">s</span><span class="o">.</span><span class="n">simulate_turns</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
 </pre></div>
 
@@ -186,6 +183,7 @@
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../Assignment1.html">Assignment 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Assignment2.html">Assignment 2</a></li>
 </ul>
 
 <div class="relations">
@@ -209,6 +207,14 @@
     </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
         </div>
       </div>
       <div class="clearer"></div>
@@ -217,8 +223,8 @@
       &copy;2018, MormonJesus69420.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.0</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
     </div>
 

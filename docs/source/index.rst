@@ -14,6 +14,7 @@ documentation for this project.
    :caption: Contents:
 
    Assignment1
+   Assignment2
 
 Indices and tables
 ==================

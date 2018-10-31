@@ -6,5 +6,5 @@ Here is the documentation for the first assignment.
    :maxdepth: 4
    :caption: Assignment 1:
 
-   Part1
-   Part2
+   Ass1Part1
+   Ass1Part2
