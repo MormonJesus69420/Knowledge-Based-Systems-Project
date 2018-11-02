@@ -34,8 +34,8 @@ class Kowalski:
         #
         # # Display the first image in testing data
         # plt.subplot(122)
-        # plt.imshow(test_X[0, :, :], cmap='gray')
-        # plt.title("Ground Truth : {}".format(test_Y[0]))
+        # plt.imshow(test_x[0, :, :], cmap='gray')
+        # plt.title("Ground Truth : {}".format(test_y[0]))
         # plt.show()
 
         # Reshape data set into 28x28x1 matrices
@@ -105,7 +105,7 @@ class Kowalski:
         # fashion_model.save("fashion_model.h5py")
         #
         # # Evaluate the model
-        # test_eval = fashion_model.evaluate(test_X, test_Y_one_hot, verbose=1)
+        # test_eval = fashion_model.evaluate(test_x, test_Y_one_hot, verbose=1)
         # print('Test loss : ', test_eval[0])
         # print('Test accuracy : ', test_eval[1])
 
