@@ -1,0 +1,11 @@
+Test loss: 0.008723314851522446
+Test accuracy: 1.0
+              precision    recall  f1-score   support
+
+    Letter A       1.00      1.00      1.00         1
+    Letter K       1.00      1.00      1.00         1
+    The rest       1.00      1.00      1.00        24
+
+   micro avg       1.00      1.00      1.00        26
+   macro avg       1.00      1.00      1.00        26
+weighted avg       1.00      1.00      1.00        26
