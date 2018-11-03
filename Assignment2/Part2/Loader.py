@@ -28,23 +28,25 @@ class Loader:
             arr = image.img_to_array(img)
             cat = self.get_category(letter)
 
-            if self.check_fifth_set(letter):
+            if self.check_validation_set(letter):
                 test_x.append(arr)
                 test_y.append(cat)
             else:
                 train_x.append(arr)
                 train_y.append(cat)
 
+        print(test_y)
+
         self._train_x = np.array(train_x)
         self._test_x = np.array(test_x)
         self._train_y = np.array(train_y)
         self._test_y = np.array(test_y)
 
-    def check_fifth_set(self, filename: str) -> bool:
-        return '5' in filename
+    def check_validation_set(self, filename: str) -> bool:
+        return '_val' in filename
 
     def get_category(self, filename: str) -> int:
-        return 1 if 'A' in filename else 2 if 'K' in filename else 0
+        return 0 if 'A' in filename else 1 if 'K' in filename else 2
 
     @property
     def train_x(self):

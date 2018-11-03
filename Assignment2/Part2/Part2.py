@@ -7,6 +7,7 @@ from keras.layers import Dense, Dropout, Flatten
 from keras.layers.advanced_activations import LeakyReLU
 from keras.models import Sequential
 from keras.utils import to_categorical
+from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
 
 from Loader import Loader
@@ -48,7 +49,7 @@ if __name__ == "__main__":
 
     # Define some constants to be used in code
     batch_size = 512  # 64 originally
-    epochs = 40  # 20 originally
+    epochs = 200  # 20 originally
     num_classes = 3
 
     # Create a training model layers
@@ -62,11 +63,11 @@ if __name__ == "__main__":
     model.add(Conv2D(64, kernel_size=(3, 3), strides=(1, 1), activation='linear', padding='same'))
     model.add(LeakyReLU(alpha=0.1))
     model.add(MaxPooling2D(pool_size=(2, 2), padding='same'))
-    model.add(Dropout(0.5))
+    model.add(Dropout(0.3))
     model.add(Conv2D(128, kernel_size=(3, 3), strides=(1, 1), activation='linear', padding='same'))
     model.add(LeakyReLU(alpha=0.1))
     model.add(MaxPooling2D(pool_size=(2, 2), padding='same'))
-    model.add(Dropout(0.5))
+    model.add(Dropout(0.3))
     model.add(Flatten())
     model.add(Dense(128, activation='linear'))
     model.add(LeakyReLU(alpha=0.1))
@@ -90,7 +91,6 @@ if __name__ == "__main__":
 
     # Evaluate the model
     test_eval = model.evaluate(test_x, test_y_one_hot, verbose=1)
-
     print('Test loss:', test_eval[0])
     print('Test accuracy:', test_eval[1])
 
@@ -116,3 +116,9 @@ if __name__ == "__main__":
     plt.legend()
     plt.savefig('letter_loss.png')
     plt.close()
+
+    # Display classification report
+    predicted_classes = model.predict(test_x)
+    predicted_classes = np.argmax(np.round(predicted_classes), axis=1)
+    target_names = ['Letter A', 'Letter K', 'The rest']
+    print(classification_report(test_y, predicted_classes, target_names=target_names))
