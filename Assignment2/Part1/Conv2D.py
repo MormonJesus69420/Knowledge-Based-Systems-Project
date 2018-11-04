@@ -29,7 +29,7 @@ class Convolution:
 
     def apply(self, feature_map: ndarray) -> ndarray:
         shape = feature_map.shape
-        target = zeros(shape)
+        result = zeros(shape)
         feature_map = pad(feature_map, (1, 1), 'constant', constant_values=1)
         kernel = self.get_kernel()
 
@@ -38,18 +38,18 @@ class Convolution:
             print(f'Kernel type: {self._kernel}')
             print(f'Kernel:\n{kernel}')
 
-        for y in range(target.shape[1]):
+        for y in range(result.shape[1]):
             start_y = y * self._stride_y
             end_y = start_y + self._kernel_y
-            for x in range(target.shape[0]):
+            for x in range(result.shape[0]):
                 start_x = x * self._stride_x
                 end_x = start_x + self._kernel_x
 
                 f_map = feature_map[start_x:end_x, start_y:end_y]
 
-                target[x, y] = sum(multiply(f_map, kernel))
+                result[x, y] = sum(multiply(f_map, kernel))
 
-        return target
+        return result
 
     def get_kernel(self) -> ndarray:
         return self._kernels[self._kernel]
