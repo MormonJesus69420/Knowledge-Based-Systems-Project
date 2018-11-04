@@ -3,7 +3,7 @@ from genericpath import isfile
 from os import listdir
 from os.path import join
 
-import numpy as np
+from numpy import array, ndarray
 from keras.preprocessing import image
 
 
@@ -37,10 +37,10 @@ class Loader:
 
         print(test_y)
 
-        self._train_x = np.array(train_x)
-        self._test_x = np.array(test_x)
-        self._train_y = np.array(train_y)
-        self._test_y = np.array(test_y)
+        self._train_x = array(train_x)
+        self._test_x = array(test_x)
+        self._train_y = array(train_y)
+        self._test_y = array(test_y)
 
     def check_validation_set(self, filename: str) -> bool:
         return '_val' in filename
@@ -49,33 +49,33 @@ class Loader:
         return 0 if 'A' in filename else 1 if 'K' in filename else 2
 
     @property
-    def train_x(self):
+    def train_x(self) -> ndarray:
         return self._train_x
 
     @train_x.setter
-    def train_x(self, val):
+    def train_x(self, val: ndarray):
         self._train_x = val
 
     @property
-    def train_y(self):
+    def train_y(self) -> ndarray:
         return self._train_y
 
     @train_y.setter
-    def train_y(self, val):
+    def train_y(self, val: ndarray):
         self._train_y = val
 
     @property
-    def test_x(self):
+    def test_x(self) -> ndarray:
         return self._test_x
 
     @test_x.setter
-    def test_x(self, val):
+    def test_x(self, val: ndarray):
         self._test_x = val
 
     @property
-    def test_y(self):
+    def test_y(self) -> ndarray:
         return self._test_y
 
     @test_y.setter
-    def test_y(self, val):
+    def test_y(self, val: ndarray):
         self._test_y = val

@@ -1,7 +1,7 @@
 from numpy import ndarray
 
 from Conv2D import Convolution, KernelType
-from MaxPooling import Pooling
+from Pooling import Pooling
 from ReLU import ReLU
 
 

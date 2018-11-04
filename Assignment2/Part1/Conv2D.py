@@ -6,12 +6,14 @@ from typing import Tuple
 def get_kernel_arr():
     edge_kernel = array([[-1, -1, -1], [-1, 8, -1], [-1, -1, -1]])
     identity_kernel = array([[0, 0, 0], [0, 1, 0], [0, 0, 0]])
-    return [edge_kernel, identity_kernel]
+    sharpen_kernel = array([[0, -1, 0], [-1, 5, -1], [0, -1, 0]])
+    return [edge_kernel, identity_kernel, sharpen_kernel]
 
 
 class KernelType(IntEnum):
     EDGE = 0
     IDENTITY = 1
+    SHARPEN = 2
 
     def __str__(self) -> str:
         return self.name.title()
@@ -25,10 +27,10 @@ class Convolution:
         self._kernel = kernel_type
         self._debug = debug
 
-    def apply(self, feature_map: ndarray):
+    def apply(self, feature_map: ndarray) -> ndarray:
         shape = feature_map.shape
         target = zeros(shape)
-        feature_map = self.pad_feature_map(feature_map)
+        feature_map = pad(feature_map, (1, 1), 'constant', constant_values=1)
         kernel = self.get_kernel()
 
         if self._debug:
@@ -49,8 +51,5 @@ class Convolution:
 
         return target
 
-    def pad_feature_map(self, feature_map: ndarray, padding: Tuple = (1, 1)) -> ndarray:
-        return pad(feature_map, padding, 'constant', constant_values=0)
-
-    def get_kernel(self):
+    def get_kernel(self) -> ndarray:
         return self._kernels[self._kernel]
