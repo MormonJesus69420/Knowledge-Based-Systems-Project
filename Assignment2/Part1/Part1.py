@@ -9,6 +9,14 @@ if __name__ == "__main__":
     layer2 = Layer(debug=True)
 
     for letter in loader.test_x:
+
+        plt.figure()
+        plt.imshow(letter, cmap=plt.get_cmap('nipy_spectral'))
+        plt.title('Before processing')
+        plt.colorbar()
+        plt.show()
+        plt.close()
+
         print("Layer 1:")
         letter = layer1.process(letter)
 
