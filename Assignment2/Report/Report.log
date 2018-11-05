@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.5)  5 NOV 2018 16:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2018.9.9)  5 NOV 2018 19:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -528,25 +528,44 @@ Underfull \hbox (badness 10000) in paragraph at lines 50--51
 File: A_Zero_Layer.png Graphic file (type png)
 <use A_Zero_Layer.png>
 Package pdftex.def Info: A_Zero_Layer.png  used on input line 69.
-(pdftex.def)             Requested size: 258.0pt x 193.5032pt.
+(pdftex.def)             Requested size: 206.39685pt x 154.79668pt.
 <A_First_Layer.png, id=2, 642.4pt x 481.8pt>
 File: A_First_Layer.png Graphic file (type png)
 <use A_First_Layer.png>
 Package pdftex.def Info: A_First_Layer.png  used on input line 70.
-(pdftex.def)             Requested size: 258.0pt x 193.5032pt.
+(pdftex.def)             Requested size: 206.39685pt x 154.79668pt.
 <A_Second_Layer.png, id=3, 642.4pt x 481.8pt>
 File: A_Second_Layer.png Graphic file (type png)
 <use A_Second_Layer.png>
 Package pdftex.def Info: A_Second_Layer.png  used on input line 71.
-(pdftex.def)             Requested size: 258.0pt x 193.5032pt.
+(pdftex.def)             Requested size: 206.39685pt x 154.79668pt.
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
-] (./Report.bbl
-
-Package natbib Warning: Empty `thebibliography' environment on input line 3.
-
-)
+]
+<Letter_Loss.png, id=18, 462.528pt x 346.896pt>
+File: Letter_Loss.png Graphic file (type png)
+<use Letter_Loss.png>
+Package pdftex.def Info: Letter_Loss.png  used on input line 103.
+(pdftex.def)             Requested size: 206.39685pt x 154.79962pt.
+<Letter_Accuracy.png, id=20, 462.528pt x 346.896pt>
+File: Letter_Accuracy.png Graphic file (type png)
+<use Letter_Accuracy.png>
+Package pdftex.def Info: Letter_Accuracy.png  used on input line 104.
+(pdftex.def)             Requested size: 206.39685pt x 154.79962pt.
+ [2 <./A_Zero_Layer.png (PNG copy)> <./A_First_Layer.png (PNG copy)> <./A_Secon
+d_Layer.png (PNG copy)> <./Letter_Loss.png> <./Letter_Accuracy.png>]
+<Best_Loss.png, id=26, 462.528pt x 346.896pt>
+File: Best_Loss.png Graphic file (type png)
+<use Best_Loss.png>
+Package pdftex.def Info: Best_Loss.png  used on input line 133.
+(pdftex.def)             Requested size: 206.39685pt x 154.79962pt.
+<Best_Accuracy.png, id=27, 462.528pt x 346.896pt>
+File: Best_Accuracy.png Graphic file (type png)
+<use Best_Accuracy.png>
+Package pdftex.def Info: Best_Accuracy.png  used on input line 134.
+(pdftex.def)             Requested size: 206.39685pt x 154.79962pt.
+ (./Report.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -558,29 +577,28 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[2 <./A_Zero_Layer.png (PNG copy)> <./A_First_Layer.png (PNG copy)> <./A_Second
-_Layer.png (PNG copy)>] (./Report.aux) ) 
+[3 <./Best_Loss.png> <./Best_Accuracy.png>] (./Report.aux) ) 
 Here is how much of TeX's memory you used:
- 6326 strings out of 492642
- 103459 string characters out of 6135567
- 179496 words of memory out of 5000000
- 10141 multiletter control sequences out of 15000+600000
- 35221 words of font info for 72 fonts, out of 8000000 for 9000
+ 6381 strings out of 492642
+ 104426 string characters out of 6135567
+ 178496 words of memory out of 5000000
+ 10184 multiletter control sequences out of 15000+600000
+ 40045 words of font info for 86 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,8n,35p,931b,250s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/
-base/8r.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
-usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/urw/courie
-r/ucrr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/shar
-e/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texmf-dist/fonts/typ
-e1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmri8a.pf
-b>
-Output written on Report.pdf (2 pages, 152371 bytes).
+ 41i,9n,35p,931b,250s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf-d
+ist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.
+pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fo
+nts/type1/urw/courier/ucrr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/u
+tmb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/
+texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-dist/fonts/type1/
+urw/times/utmri8a.pfb>
+Output written on Report.pdf (3 pages, 256893 bytes).
 PDF statistics:
- 51 PDF objects out of 1000 (max. 8388607)
- 34 compressed objects within 1 object stream
+ 63 PDF objects out of 1000 (max. 8388607)
+ 37 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -66,18 +66,87 @@ Results from my own implementation of CNN can be seen in \cref{fig:FirstPart}, a
 \end{equation}
 
 \begin{figure}[htbp]
-  \centerline{\includegraphics[width=.5\textwidth]{A_Zero_Layer}}
-  \centerline{\includegraphics[width=.5\textwidth]{A_First_Layer}}
-  \centerline{\includegraphics[width=.5\textwidth]{A_Second_Layer}}
-\caption{Visualization of a matrix for letter A before and after it went through two layers of my CNN}
+  \centerline{\includegraphics[width=.4\textwidth]{A_Zero_Layer}}
+  \centerline{\includegraphics[width=.4\textwidth]{A_First_Layer}}
+  \centerline{\includegraphics[width=.4\textwidth]{A_Second_Layer}}
+\caption{Visualization of a matrix for letter A before and after it went through two layers of my CNN.}
 \label{fig:FirstPart}
 \end{figure}
 
 Results for most of the letters are quite satisfactory, however since the sample size I have gotten was of really bad quality (noise from jpeg compression), not all letters look as good. Though I have managed to reduce it by sharpening the images.
 
-Surprising thing happened when I tried to get my model to defferentiate between A and K. After many trials I ended up
+Surprising thing happened when I tried to get my model to defferentiate between A and K. After many trials I ended up with a working model that was able to tell them apart $100\%$ of the time. However I needed to overtrain it in order to be able to do so. 
 
+I have tried a lot of different kernel sizes, strides, as well as dropout values and to do it with and without pooling. None of them worked unless I overtrained my model. The values used are shown in \cref{tab:parametersLetters}. Dropout values were chosen based on research done in \cite{NIPS2013_4878}, and my own experimentation. 
+
+As for what I did was run the tests for hundred epochs with various kernels, strides, and dropout various. Kernel sizes ranged from 3x3 to 5x5, strides went from 1x1 till 5x5, and dropout values tested were 0.2, 0.3, 0.4, 0.5, and 0.6.
+
+Resulting test accuracy was $100\%$ with loss equal to $0.8\%$ percent. And graphs showing development of loss and accuracy can be seen in \cref{fig:LossAccLetters}.
+\begin{table}[htbp]
+  \centerline{
+  \begin{tabular}{l l}
+    Parameter    & Value \\
+    Conv. kernel & 3x3   \\
+    Conv. stride & 1x1   \\
+    Pool. size   & 2x2   \\
+    1st dropout  & 0.5   \\
+    2nd dropout  & 0.4   \\
+    3rd dropout  & 0.3   \\
+    4th dropout  & 0.5   \\
+    Epochs       & 420   \\\\
+  \end{tabular}}
+  \caption{Parameter values for recognizing letters in pictures.}
+  \label{tab:parametersLetters}
+\end{table}
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=.4\textwidth]{Letter_Loss}}
+\centerline{\includegraphics[width=.4\textwidth]{Letter_Accuracy}}
+\caption{Loss and Accuracy graphs (respectively) for the training and validation data reached by my CNN on letters.}
+\label{fig:LossAccLetters}
+\end{figure}
+
+As one can see from the graphs model started overfitting around epoch 200-220, wheras training accuracy went up after 150 epochs, while validation accuracy reached its peak around 300th epoch. It needs to be mentioned that because of the high dropout rate in first and last layer it is not a predictable model and it can sometimes end up with worse accuracy. Sometimes when I ran the training on this model I ended up with only $95\%$ accuracy as it couldn't recognize A, K, or both.
+
+Lastly, results for the training on CIFAR-10 look much better as I don't overfit my model and they seem to coincide with research done by others who used simple CNNs \cite{DBLP:journals/corr/McDonnellV15}. I ended up with accuracy around $79\%$ and a loss of $62\%$. Although the loss value is quite high, it's similar to what others have achieved and the model itself is not overfitted. \Cref{tab:parametersCIFAR} shows values used in the final model.
+\cref{fig:LossAccLetters}.
+\begin{table}[htbp]
+  \centerline{
+    \begin{tabular}{l l}
+      Parameter    & Value \\
+      Conv. kernel & 3x3   \\
+      Conv. stride & 1x1   \\
+      Pool. size   & 2x2   \\
+      1st dropout  & 0.5   \\
+      2nd dropout  & 0.3   \\
+      3rd dropout  & 0.5   \\
+      4th dropout  & 0.3   \\
+      Epochs       & 200   \\\\
+  \end{tabular}}
+  \caption{Parameter values for categorizing pictures in CIFAR-10 dataset.}
+  \label{tab:parametersCIFAR}
+\end{table}
+
+It's worth mentioning that I have trained 128 models with kernel and stride sizes ranging from 1x1 to 10x10. The best was shown to be 3x3 kernel size with 1x1 dropout, whereas the worst one was and 8x8 kernel with stride of 1x1, it had a loss equal to $253\%$ and accuracy of $67\%$. \Cref{fig:LossAccCIFAR} show development of the model.
+
+\begin{figure}[htbp]
+  \centerline{\includegraphics[width=.4\textwidth]{Best_Loss}}
+  \centerline{\includegraphics[width=.4\textwidth]{Best_Accuracy}}
+  \caption{Loss and Accuracy graphs (respectively) for the training and validation data reached by my CNN on CIFAR-10 dataset.}
+  \label{fig:LossAccCIFAR}
+\end{figure}
 \section{Discussion}
+Overall I am very satisfied with my results. The results I got from my own convolution layers implementation were quite good given the dataset I had, and thanks to NumPy algorithms used it runs really fast.
+
+The reason for need to overfit the model, in my opinion is based on relatively small dataset I have used in training my model and the bad quality of said set. A lot of pictures had were really bad in quality and low-res. I believe that if I had a bigger dataset like like MNIST I could achieve better results, much faster too.
+
+Another thing that is worth giving a shot would be to add data augmentation to my training in the form of scaling, rotating, flipping, translating, etc. the data set. This could possibly give better results as I could artificially increase the data set this way. There are tools for this both in Keras and Tensorflow libraries.
+
+When it comes to CIFAR-10 dataset I have noticed that my model struggles a lot with accurately categorizing pictures in the first class (Aeroplanes). It only achieved accuracy of around $43\%$ whereas the other 9 classes had accuracy scores raging from $77-92\%$. My explanation for it is the fact that a images in this set are very different from eachother and it's hard to distinguish them from others (I myself struggled to see the aeroplanes in them).
+
+Overall I am content with my results and I have learned a lot along the way. I also believe that research I have done, with different kernel sizes and other parameters have given me insight and better intuition in choosing good values for a given task.
+
+My work has of course a lot of room for further improvement, like aforementioned data augmentation and maybe adding of another layers to the model to further improve its results.
 
 
 \section*{Acknowledgments}
