@@ -82,7 +82,7 @@ class Simulation:
             count += 1
 
         pyplot.legend(handles=handles, loc='center left', bbox_to_anchor=(1, 0.5))
-
+        pyplot.title("Scores for cars after 10k rounds")
         pyplot.ylabel("Score")
         pyplot.xlabel("Actions")
 
